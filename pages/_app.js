@@ -1,3 +1,4 @@
+import 'tailwindcss/tailwind.css'
 import { useState } from 'react'
 import { Auth } from '@supabase/ui'
 import * as dotter from '@generates/dotter'

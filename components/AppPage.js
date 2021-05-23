@@ -1,5 +1,6 @@
 import { useEffect, useContext } from 'react'
 import { Auth } from '@supabase/ui'
+import clsx from 'clsx'
 import { AppContext } from '../lib/context.js'
 import { supabase } from '../lib/initSupabase.js'
 import Header from './Header.js'
@@ -38,11 +39,13 @@ export default function AppPage ({ children, ...props }) {
   )
 
   return (
-    <div className="">
+    <div className={clsx(
+      'dark:bg-gray-800 dark:text-gray-300 flex flex-col min-h-screen'
+    )}>
 
       <Header {...props} />
 
-      <main className="">
+      <main className="flex">
         {children}
       </main>
 

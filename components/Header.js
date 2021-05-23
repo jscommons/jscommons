@@ -1,20 +1,19 @@
 import { useContext } from 'react'
 import { Auth } from '@supabase/ui'
 import Link from 'next/link'
+import clsx from 'clsx'
 import { AppContext } from '../lib/context.js'
+import BrandHeading from '../components/BrandHeading.js'
+import container from '../styles/container.js'
 
 export default function Header () {
   const { user } = Auth.useUser()
   const ctx = useContext(AppContext)
 
   return (
-    <div>
+    <div className={clsx(container, 'mt-6')}>
 
-      <h1>
-        <Link href="/">
-          <a>JS Commons</a>
-        </Link>
-      </h1>
+      <BrandHeading />
 
       {user
         ? (
