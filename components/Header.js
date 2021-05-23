@@ -40,18 +40,20 @@ export default function Header () {
 
       </nav>
 
-      {user
-        ? (
-            <div className="ml-auto">
-              {ctx.profile.username}
-            </div>
-          )
-        : (
-            <Link href="/login">
-              <a>Login</a>
-            </Link>
-          )
-      }
+      <nav className="ml-auto">
+        {ctx.profile
+          ? (
+              <div className="ml-auto">
+                {ctx.profile.username}
+              </div>
+            )
+          : (
+              <Link href="/login">
+                <a>Login</a>
+              </Link>
+            )
+        }
+      </nav>
 
     </div>
   )
