@@ -4,7 +4,7 @@ import container from '../styles/container.js'
 
 const links = [
   { name: 'Top', href: '/' },
-  { name: 'New', href: '/new' },
+  { name: 'Latest', href: '/latest' },
   { name: 'Post', href: '/post' }
 ]
 
@@ -13,7 +13,7 @@ export default function Footer () {
     <div className={clsx(container, 'text-center text-gray-500')}>
 
       <nav
-        className="-mx-5 -my-2 flex flex-wrap justify-center"
+        className="-mx-4 -my-2 flex flex-wrap justify-center"
         aria-label="Footer"
       >
         {links.map(link => (
@@ -29,7 +29,7 @@ export default function Footer () {
       </nav>
 
       <div className="mt-6">
-        Copyright &copy; 2021. All rights reserved.
+        Copyright &copy; 2021 JS Commons. All rights reserved.
       </div>
 
     </div>

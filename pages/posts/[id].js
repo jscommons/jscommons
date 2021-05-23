@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import clsx from 'clsx'
 import AppPage from '../../components/AppPage.js'
 import { supabase } from '../../lib/initSupabase.js'
+import container from '../../styles/container.js'
 
 export default function Post () {
   const router = useRouter()
@@ -34,23 +36,29 @@ export default function Post () {
 
   return (
     <AppPage>
+      <div className={clsx(container, 'my-8')}>
 
-      {post && (
-        <div>
+        {post && (
+          <div>
 
-          {post.title}
+            <h1 className="text-2xl font-medium">
+              {post.title}
+            </h1>
 
-          {post.body}
+            <p className="text-lg mt-2">
+              {post.body}
+            </p>
 
-        </div>
-      )}
+          </div>
+        )}
 
-      {!post && (
-        <div>
-          Post not found
-        </div>
-      )}
+        {!post && (
+          <div>
+            Post not found
+          </div>
+        )}
 
+      </div>
     </AppPage>
   )
 }
