@@ -1,13 +1,19 @@
 import clsx from 'clsx'
+import { HiArrowCircleUp } from 'react-icons/hi'
 import AppLink from '../components/AppLink.js'
 
 export default function PostList (props) {
   return (
     <ul>
       {props.posts?.map(post => (
-        <li key={post.id} className="my-5">
+        <li key={post.id} className="my-5 flex items-center">
 
           <div>
+            <HiArrowCircleUp className="text-gray-500 w-8 h-8" />
+          </div>
+
+          <div className="ml-4">
+
             <AppLink
               href={post.link || ('/posts/' + post.id)}
               className={clsx(
@@ -17,16 +23,17 @@ export default function PostList (props) {
             >
               {post.title}
             </AppLink>
-          </div>
 
-          <div>
-            from {' '}
-            <AppLink
-              href={'/profiles/' + post.profiles.username}
-              className="underline text-gray-400 hover:text-gray-200"
-            >
-              {post.profiles.username}
-            </AppLink>
+            <div>
+              Posted by {' '}
+              <AppLink
+                href={'/profiles/' + post.profiles.username}
+                className="underline text-gray-400 hover:text-gray-200"
+              >
+                {post.profiles.username}
+              </AppLink>
+            </div>
+
           </div>
 
         </li>
