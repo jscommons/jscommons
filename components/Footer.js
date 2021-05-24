@@ -10,7 +10,7 @@ const links = [
 
 export default function Footer () {
   return (
-    <div className={clsx(container, 'text-center text-gray-500')}>
+    <div className={clsx(container, 'text-center text-gray-500 my-6')}>
 
       <nav
         className="-mx-4 -my-2 flex flex-wrap justify-center"
@@ -20,7 +20,10 @@ export default function Footer () {
           <div key={link.name} className="px-4 py-2">
             <AppLink
               href={link.href}
-              className="text-lg text-gray-400 hover:text-gray-200"
+              className={clsx(
+                'text-lg text-gray-400 hover:text-gray-200',
+                'transition duration-200'
+              )}
             >
               {link.name}
             </AppLink>

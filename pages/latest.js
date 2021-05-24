@@ -14,7 +14,7 @@ export default function Latest () {
         .from('posts')
         .select('*, profiles(username)')
         .eq('posts.author', 'profiles.id')
-        .order('id', { ascending: false })
+        .order('created_at', { ascending: false })
         .then(({ data, error }) => {
           if (error) {
             console.error(error)

@@ -45,7 +45,7 @@ export default function AppPage ({ children, ...props }) {
 
       <Header {...props} />
 
-      <main className="flex">
+      <main className="flex-1">
         {children}
       </main>
 

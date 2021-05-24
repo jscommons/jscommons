@@ -1,9 +1,14 @@
 import { useContext } from 'react'
 import { useRouter } from 'next/router'
 import { Formik, Form, Field } from 'formik'
+import clsx from 'clsx'
 import AppPage from '../components/AppPage.js'
 import { supabase } from '../lib/initSupabase.js'
 import { AppContext } from '../lib/context.js'
+import TextControl from '../components/controls/TextControl.js'
+import container from '../styles/container.js'
+import TextareaControl from '../components/controls/TextareaControl.js'
+import primaryButton from '../styles/buttons/primaryButton.js'
 
 export default function Post () {
   const ctx = useContext(AppContext)
@@ -34,22 +39,26 @@ export default function Post () {
         onSubmit={submitPost}
       >
         {({ isSubmitting }) => (
-          <Form>
+          <Form className={clsx(container, 'my-8 grid gap-6')}>
 
-            <Field
-              name="title"
+            <h1 className="text-xl text-gray-200 mb-4">
+              Create a new post!
+            </h1>
+
+            <TextControl id="title" label="Title" />
+
+            <TextControl
+              id="link"
+              label="Link (optional)"
+              placeholder="https://github.com/jscommon/jscommon"
             />
 
-            <Field
-              name="link"
-            />
+            <TextareaControl id="body" label="Body (optional)" />
 
-            <Field
-              type="textarea"
-              name="body"
-            />
-
-            <button type="submit">
+            <button
+              type="submit"
+              className={clsx(primaryButton, 'w-48 mt-2')}
+            >
               Submit Post
             </button>
 
