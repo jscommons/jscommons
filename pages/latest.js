@@ -12,7 +12,7 @@ export default function Latest () {
     () => {
       supabase
         .from('posts')
-        .select('*, profiles(username)')
+        .select('*, author(username)')
         .eq('posts.author', 'profiles.id')
         .order('created_at', { ascending: false })
         .then(({ data, error }) => {

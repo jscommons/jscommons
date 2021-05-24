@@ -23,10 +23,8 @@ export default function Login () {
             if (error) {
               console.error(error)
             } else {
+              console.info('Profile data', data)
               const [profile] = data || []
-
-              if (!profile) console.error('No profile data', data)
-
               ctx.update('profile', profile)
               router.push('/')
             }

@@ -20,10 +20,8 @@ export default function Post () {
             if (error) {
               console.error(error)
             } else {
+              console.info('Post data', data)
               const [post] = data || []
-
-              if (!post) console.error('No post data', data)
-
               setPost(post)
             }
           })

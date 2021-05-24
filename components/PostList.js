@@ -24,13 +24,13 @@ export default function PostList (props) {
               {post.title}
             </AppLink>
 
-            <div>
+            <div className="text-gray-400">
               Posted by {' '}
               <AppLink
-                href={'/profiles/' + post.profiles.username}
-                className="underline text-gray-400 hover:text-gray-200"
+                href={'/profiles/' + post.author.username}
+                className="underline font-medium hover:text-gray-200"
               >
-                {post.profiles.username}
+                {post.author.username}
               </AppLink>
             </div>
 

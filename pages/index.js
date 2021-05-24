@@ -11,9 +11,10 @@ export default function Top () {
   useEffect(
     () => {
       supabase
-        .from('posts')
-        .select('*, profiles(username)')
-        .eq('posts.author', 'profiles.id')
+        .from('scored_posts')
+        .select('*, author(username)')
+        .eq('scored_posts.author', 'profiles.id')
+        .order('score', { ascending: false })
         .then(({ data, error }) => {
           if (error) {
             console.error(error)
