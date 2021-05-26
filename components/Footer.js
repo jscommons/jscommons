@@ -3,9 +3,10 @@ import AppLink from '../components/AppLink.js'
 import container from '../styles/container.js'
 
 const links = [
-  { name: 'Top', href: '/' },
-  { name: 'Latest', href: '/latest' },
-  { name: 'Post', href: '/post' }
+  { name: 'About', href: '/about' },
+  { name: 'Conduct', href: '/conduct' },
+  { name: 'Terms', href: '/terms' },
+  { name: 'Privacy', href: '/privacy' }
 ]
 
 export default function Footer () {

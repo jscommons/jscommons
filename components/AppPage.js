@@ -12,7 +12,7 @@ export default function AppPage ({ children, ...props }) {
 
   useEffect(
     () => {
-      if (user && !ctx.profile) {
+      if (user && !ctx.profile.id) {
         supabase
           .from('profiles')
           .select('*')
@@ -28,8 +28,6 @@ export default function AppPage ({ children, ...props }) {
               ctx.update('profile', profile)
             }
           })
-      } else {
-        console.log(user, ctx)
       }
     },
     [
@@ -40,7 +38,7 @@ export default function AppPage ({ children, ...props }) {
 
   return (
     <div className={clsx(
-      'dark:bg-gray-800 dark:text-gray-300 flex flex-col min-h-screen'
+      'dark:bg-gray-900 dark:text-gray-300 flex flex-col min-h-screen'
     )}>
 
       <Header {...props} />

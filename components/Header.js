@@ -1,5 +1,4 @@
 import { useContext } from 'react'
-import { Auth } from '@supabase/ui'
 import Link from 'next/link'
 import clsx from 'clsx'
 import { AppContext } from '../lib/context.js'
@@ -10,29 +9,28 @@ import AppLink from '../components/AppLink.js'
 const links = [
   { name: 'Top', href: '/' },
   { name: 'Latest', href: '/latest' },
-  { name: 'Post', href: '/post' }
+  { name: 'Submit', href: '/submit' }
 ]
 
 export default function Header () {
-  const { user } = Auth.useUser()
   const ctx = useContext(AppContext)
 
   return (
-    <div className={clsx(container, 'flex items-center mt-6')}>
+    <div className={clsx(container, 'flex items-center mt-4')}>
 
       <BrandHeading />
 
       <nav
-        className="flex flex-wrap ml-8"
+        className="flex flex-wrap ml-8 mt-8"
         aria-label="Header"
       >
 
         {links.map(link => (
-          <div key={link.name} className="px-4 py-2">
+          <div key={link.name} className="px-5 py-2">
             <AppLink
               href={link.href}
               className={clsx(
-                'text-lg text-gray-400 hover:text-gray-200',
+                'text-lg hover:text-gray-100',
                 'transition duration-200'
               )}
             >
@@ -44,7 +42,7 @@ export default function Header () {
       </nav>
 
       <nav className="ml-auto">
-        {ctx.profile
+        {ctx.profile.username
           ? (
               <div className="ml-auto">
                 {ctx.profile.username}

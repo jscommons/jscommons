@@ -4,8 +4,10 @@ import clsx from 'clsx'
 import AppPage from '../../components/AppPage.js'
 import { supabase } from '../../lib/initSupabase.js'
 import container from '../../styles/container.js'
+import Reply from '../../components/Reply.js'
+import ReplyForm from '../../components/ReplyForm.js'
 
-export default function Post () {
+export default function PostPage () {
   const router = useRouter()
   const [post, setPost] = useState()
 
@@ -13,7 +15,7 @@ export default function Post () {
     () => {
       if (router.query.id) {
         supabase
-          .from('posts')
+          .from('threaded_posts')
           .select('*')
           .eq('id', router.query.id)
           .then(({ data, error }) => {
@@ -46,6 +48,12 @@ export default function Post () {
             <p className="text-lg mt-2">
               {post.body}
             </p>
+
+            <ReplyForm parentId={post.id} />
+
+            {post.replies.list?.map(reply => (
+              <Reply key={reply.id} reply={reply} />
+            ))}
 
           </div>
         )}

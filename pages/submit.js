@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import { useRouter } from 'next/router'
-import { Formik, Form, Field } from 'formik'
+import { Formik, Form } from 'formik'
 import clsx from 'clsx'
 import AppPage from '../components/AppPage.js'
 import { supabase } from '../lib/initSupabase.js'
@@ -10,7 +10,7 @@ import container from '../styles/container.js'
 import TextareaControl from '../components/controls/TextareaControl.js'
 import primaryButton from '../styles/buttons/primaryButton.js'
 
-export default function Post () {
+export default function Submit () {
   const ctx = useContext(AppContext)
   const router = useRouter()
 
@@ -40,7 +40,7 @@ export default function Post () {
           <Form className={clsx(container, 'my-8 grid gap-6')}>
 
             <h1 className="text-xl text-gray-200 mb-4">
-              Create a new post!
+              Submit a new post!
             </h1>
 
             <TextControl id="title" label="Title" />

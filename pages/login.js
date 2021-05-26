@@ -14,7 +14,7 @@ export default function Login () {
 
   useEffect(
     () => {
-      if (user && !ctx.profile) {
+      if (user && !ctx.profile.id) {
         supabase
           .from('profiles')
           .select('*')
