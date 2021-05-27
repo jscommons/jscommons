@@ -53,7 +53,17 @@ export default function PostPage () {
             </p>
 
             <div className="text-gray-400">
+              
               <PostAuthor post={post} />
+                
+              {post.parent_id && (
+                <Link href={'/posts/' + post.parent_id}>
+                  <a>
+                    Parent
+                  </a>
+                </Link>
+              )}
+                
             </div>
 
             <ReplyForm parentId={post.id} />
