@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 import clsx from 'clsx'
 import AppPage from '../../components/AppPage.js'
 import { supabase } from '../../lib/initSupabase.js'
 import container from '../../styles/container.js'
 import Reply from '../../components/Reply.js'
 import ReplyForm from '../../components/ReplyForm.js'
+import PostAuthor from '../../components/PostAuthor.js'
+import footerLink from '../../styles/footerLink.js'
 
 export default function PostPage () {
   const router = useRouter()
@@ -48,6 +51,10 @@ export default function PostPage () {
             <p className="text-lg mt-2">
               {post.body}
             </p>
+
+            <div className="text-gray-400">
+              <PostAuthor post={post} />
+            </div>
 
             <ReplyForm parentId={post.id} />
 

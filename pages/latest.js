@@ -12,20 +12,8 @@ export default function Latest () {
 
   useEffect(
     () => {
-      let query = supabase.from('posts')
-
-      if (ctx.profile.id) {
-        query = query
-          .select('*, author(username), votes(*)')
-          .eq('votes.profile_id', ctx.profile.id)
-      } else {
-        query = query.select('*, author(username)')
-      }
-
-      query
-        .eq('posts.author', 'profiles.id')
-        .is('parent_id', null)
-        .order('created_at', { ascending: false })
+      supabase
+        .rpc('get_latest_posts', { profile_id: ctx.profile.id })
         .then(({ data, error }) => {
           if (error) {
             console.error(error)

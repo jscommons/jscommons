@@ -12,20 +12,8 @@ export default function Top () {
 
   useEffect(
     () => {
-      let query = supabase.from('scored_posts')
-
-      if (ctx.profile.id) {
-        query = query
-          .select('*, author(username), votes(*)')
-          .eq('votes.profile_id', ctx.profile.id)
-      } else {
-        query = query.select('*, author(username)')
-      }
-
-      query
-        .eq('scored_posts.author', 'profiles.id')
-        .is('parent_id', null)
-        .order('total_score', { ascending: false })
+      supabase
+        .rpc('get_top_posts', { profile_id: ctx.profile.id })
         .then(({ data, error }) => {
           if (error) {
             console.error(error)

@@ -1,7 +1,12 @@
 import { useState } from 'react'
-import AppLink from './AppLink.js'
+import Link from 'next/link'
 import ReplyForm from './ReplyForm.js'
 import ReplyList from './ReplyList.js'
+
+const footerLink = `
+  underline font-medium text-gray-400 hover:text-gray-200 transition
+  duration-200 cursor-pointer
+`
 
 export default function Reply (props) {
   const [reply, setReply] = useState(props.reply)
@@ -16,12 +21,16 @@ export default function Reply (props) {
 
       <div>
 
-        <AppLink href={'/posts/' + reply.id}>
-          Link
-        </AppLink>
+        <Link href={'/posts/' + reply.id}>
+          <a className={footerLink}>
+            Link
+          </a>
+        </Link>
+
+        <span className="mx-2">•</span>
 
         <a
-          className="underline"
+          className={footerLink}
           onClick={() => setShowReplyForm(!showReplyForm)}
         >
           Reply
@@ -32,7 +41,7 @@ export default function Reply (props) {
       {showReplyForm && <ReplyForm parent={reply.id} />}
 
       {reply.replies.list?.length && (
-        <div className="mt-4 pl-4 border-l border-gray-700">
+        <div className="my-4 pl-4 border-l border-gray-700">
           <ReplyList replies={reply.replies.list} />
         </div>
       )}

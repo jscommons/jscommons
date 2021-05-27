@@ -7,7 +7,7 @@ export default function ReplyList (props) {
   return (
     <ul>
       {replies?.map(reply => (
-        <li key={reply.id}>
+        <li key={reply.id} className="my-5">
           <Reply reply={reply} />
         </li>
       ))}
