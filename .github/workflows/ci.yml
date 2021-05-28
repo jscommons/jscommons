@@ -28,6 +28,6 @@ jobs:
       - name: Install Supabase
         run: npm install -g supabase
       - name: Supabase
-        run: docker-compose -d --file .supabase/docker/docker-compose.yml --project-name supabase up
+        run: docker-compose --file .supabase/docker/docker-compose.yml --project-name supabase up -d
       - name: Test
         run: yarn test
