@@ -48,29 +48,37 @@ export default function PostPage () {
               {post.title}
             </h1>
 
-            <p className="text-lg mt-2">
+            <p className="text-xl mt-2">
               {post.body}
             </p>
 
             <div className="text-gray-400">
-              
+
               <PostAuthor post={post} />
-                
+
               {post.parent_id && (
-                <Link href={'/posts/' + post.parent_id}>
-                  <a>
-                    Parent
-                  </a>
-                </Link>
+                <>
+
+                  <span className="mx-2">•</span>
+
+                  <Link href={'/posts/' + post.parent_id}>
+                    <a className={footerLink}>
+                      Parent
+                    </a>
+                  </Link>
+
+                </>
               )}
-                
+
             </div>
 
             <ReplyForm parentId={post.id} />
 
-            {post.replies.list?.map(reply => (
-              <Reply key={reply.id} reply={reply} />
-            ))}
+            <div className="mt-12">
+              {post.replies.list?.map(reply => (
+                <Reply key={reply.id} reply={reply} />
+              ))}
+            </div>
 
           </div>
         )}

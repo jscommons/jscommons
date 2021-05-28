@@ -19,7 +19,7 @@ export default function Reply (props) {
         {reply.body}
       </div>
 
-      <div>
+      <div className="text-gray-400">
 
         <Link href={'/posts/' + reply.id}>
           <a className={footerLink}>
