@@ -27,9 +27,9 @@ jobs:
         run: yarn lint
       - name: Install Supabase
         run: npm install -g supabase
-      - name: Supabase
-        run: |
-          supabase init
-          supabase start
+      - name: Supabase Init
+        run: supabase init
+      - name: Supabase Start
+        run: supabase start
       - name: Test
         run: yarn test
