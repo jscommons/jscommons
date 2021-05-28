@@ -8,13 +8,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 3
-    services:
-      postgres:
-        image: postgres:12.3
-        env:
-          POSTGRES_DB: postgres
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: gettinPlayed
+    # services:
+    #   postgres:
+    #     image: postgres:12.3
+    #     env:
+    #       POSTGRES_DB: postgres
+    #       POSTGRES_USER: postgres
+    #       POSTGRES_PASSWORD: gettinPlayed
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -25,5 +25,11 @@ jobs:
         run: yarn
       - name: Lint
         run: yarn lint
+      - name: Install Supabase
+        run: npm inatall -g supabase
+      - name: Supabase
+        run: |
+          supabase init
+          supabase start
       - name: Test
         run: yarn test
