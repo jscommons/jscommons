@@ -27,11 +27,7 @@ jobs:
         run: yarn lint
       - name: Install Supabase
         run: npm install -g supabase
-      - name: Supabase Init
-        run: supabase init
-      - name: wtf
-        run: ls -al
-      - name: Supabase Start
+      - name: Supabase
         run: supabase start
       - name: Test
         run: yarn test
