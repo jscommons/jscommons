@@ -400,7 +400,7 @@ CREATE VIEW public.threaded_posts AS
 ALTER TABLE public.threaded_posts OWNER TO postgres;
 
 --
--- Name: posts posts_pkey; Type: CONSTRAINT; Schema: public; Owner: supabase_admin
+-- Name: posts posts_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.posts
@@ -408,7 +408,7 @@ ALTER TABLE ONLY public.posts
 
 
 --
--- Name: profiles profiles_pkey; Type: CONSTRAINT; Schema: public; Owner: supabase_admin
+-- Name: profiles profiles_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.profiles
@@ -416,7 +416,7 @@ ALTER TABLE ONLY public.profiles
 
 
 --
--- Name: profiles unique_username; Type: CONSTRAINT; Schema: public; Owner: supabase_admin
+-- Name: profiles unique_username; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.profiles
@@ -424,7 +424,7 @@ ALTER TABLE ONLY public.profiles
 
 
 --
--- Name: votes votes_pkey; Type: CONSTRAINT; Schema: public; Owner: supabase_admin
+-- Name: votes votes_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.votes
@@ -432,7 +432,7 @@ ALTER TABLE ONLY public.votes
 
 
 --
--- Name: posts posts_profile_fkey; Type: FK CONSTRAINT; Schema: public; Owner: supabase_admin
+-- Name: posts posts_profile_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.posts
@@ -440,7 +440,7 @@ ALTER TABLE ONLY public.posts
 
 
 --
--- Name: posts posts_parent_fkey; Type: FK CONSTRAINT; Schema: public; Owner: supabase_admin
+-- Name: posts posts_parent_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.posts
@@ -448,7 +448,7 @@ ALTER TABLE ONLY public.posts
 
 
 --
--- Name: profiles user_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: supabase_admin
+-- Name: profiles user_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.profiles
@@ -456,7 +456,7 @@ ALTER TABLE ONLY public.profiles
 
 
 --
--- Name: votes votes_post_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: supabase_admin
+-- Name: votes votes_post_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.votes
@@ -464,7 +464,7 @@ ALTER TABLE ONLY public.votes
 
 
 --
--- Name: votes votes_profile_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: supabase_admin
+-- Name: votes votes_profile_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.votes
@@ -499,7 +499,7 @@ GRANT ALL ON FUNCTION public.get_top_posts(profile_id uuid, OUT id uuid, OUT tit
 
 
 --
--- Name: TABLE posts; Type: ACL; Schema: public; Owner: supabase_admin
+-- Name: TABLE posts; Type: ACL; Schema: public; Owner: postgres
 --
 
 GRANT ALL ON TABLE public.posts TO postgres;
@@ -509,7 +509,7 @@ GRANT ALL ON TABLE public.posts TO service_role;
 
 
 --
--- Name: TABLE profiles; Type: ACL; Schema: public; Owner: supabase_admin
+-- Name: TABLE profiles; Type: ACL; Schema: public; Owner: postgres
 --
 
 GRANT ALL ON TABLE public.profiles TO postgres;
@@ -519,7 +519,7 @@ GRANT ALL ON TABLE public.profiles TO service_role;
 
 
 --
--- Name: TABLE votes; Type: ACL; Schema: public; Owner: supabase_admin
+-- Name: TABLE votes; Type: ACL; Schema: public; Owner: postgres
 --
 
 GRANT ALL ON TABLE public.votes TO postgres;
@@ -529,7 +529,7 @@ GRANT ALL ON TABLE public.votes TO service_role;
 
 
 --
--- Name: TABLE scored_posts; Type: ACL; Schema: public; Owner: supabase_admin
+-- Name: TABLE scored_posts; Type: ACL; Schema: public; Owner: postgres
 --
 
 GRANT ALL ON TABLE public.scored_posts TO postgres;
@@ -539,7 +539,7 @@ GRANT ALL ON TABLE public.scored_posts TO service_role;
 
 
 --
--- Name: TABLE threaded_posts; Type: ACL; Schema: public; Owner: supabase_admin
+-- Name: TABLE threaded_posts; Type: ACL; Schema: public; Owner: postgres
 --
 
 GRANT ALL ON TABLE public.threaded_posts TO postgres;
@@ -558,17 +558,6 @@ ALTER DEFAULT PRIVILEGES FOR ROLE postgres IN SCHEMA public GRANT ALL ON SEQUENC
 
 
 --
--- Name: DEFAULT PRIVILEGES FOR SEQUENCES; Type: DEFAULT ACL; Schema: public; Owner: supabase_admin
---
-
-ALTER DEFAULT PRIVILEGES FOR ROLE supabase_admin IN SCHEMA public REVOKE ALL ON SEQUENCES  FROM supabase_admin;
-ALTER DEFAULT PRIVILEGES FOR ROLE supabase_admin IN SCHEMA public GRANT ALL ON SEQUENCES  TO postgres;
-ALTER DEFAULT PRIVILEGES FOR ROLE supabase_admin IN SCHEMA public GRANT ALL ON SEQUENCES  TO anon;
-ALTER DEFAULT PRIVILEGES FOR ROLE supabase_admin IN SCHEMA public GRANT ALL ON SEQUENCES  TO authenticated;
-ALTER DEFAULT PRIVILEGES FOR ROLE supabase_admin IN SCHEMA public GRANT ALL ON SEQUENCES  TO service_role;
-
-
---
 -- Name: DEFAULT PRIVILEGES FOR FUNCTIONS; Type: DEFAULT ACL; Schema: public; Owner: postgres
 --
 
@@ -579,35 +568,12 @@ ALTER DEFAULT PRIVILEGES FOR ROLE postgres IN SCHEMA public GRANT ALL ON FUNCTIO
 
 
 --
--- Name: DEFAULT PRIVILEGES FOR FUNCTIONS; Type: DEFAULT ACL; Schema: public; Owner: supabase_admin
---
-
-ALTER DEFAULT PRIVILEGES FOR ROLE supabase_admin IN SCHEMA public REVOKE ALL ON FUNCTIONS  FROM PUBLIC;
-ALTER DEFAULT PRIVILEGES FOR ROLE supabase_admin IN SCHEMA public REVOKE ALL ON FUNCTIONS  FROM supabase_admin;
-ALTER DEFAULT PRIVILEGES FOR ROLE supabase_admin IN SCHEMA public GRANT ALL ON FUNCTIONS  TO postgres;
-ALTER DEFAULT PRIVILEGES FOR ROLE supabase_admin IN SCHEMA public GRANT ALL ON FUNCTIONS  TO anon;
-ALTER DEFAULT PRIVILEGES FOR ROLE supabase_admin IN SCHEMA public GRANT ALL ON FUNCTIONS  TO authenticated;
-ALTER DEFAULT PRIVILEGES FOR ROLE supabase_admin IN SCHEMA public GRANT ALL ON FUNCTIONS  TO service_role;
-
-
---
 -- Name: DEFAULT PRIVILEGES FOR TABLES; Type: DEFAULT ACL; Schema: public; Owner: postgres
 --
 
 ALTER DEFAULT PRIVILEGES FOR ROLE postgres IN SCHEMA public GRANT ALL ON TABLES  TO anon;
 ALTER DEFAULT PRIVILEGES FOR ROLE postgres IN SCHEMA public GRANT ALL ON TABLES  TO authenticated;
 ALTER DEFAULT PRIVILEGES FOR ROLE postgres IN SCHEMA public GRANT ALL ON TABLES  TO service_role;
-
-
---
--- Name: DEFAULT PRIVILEGES FOR TABLES; Type: DEFAULT ACL; Schema: public; Owner: supabase_admin
---
-
-ALTER DEFAULT PRIVILEGES FOR ROLE supabase_admin IN SCHEMA public REVOKE ALL ON TABLES  FROM supabase_admin;
-ALTER DEFAULT PRIVILEGES FOR ROLE supabase_admin IN SCHEMA public GRANT ALL ON TABLES  TO postgres;
-ALTER DEFAULT PRIVILEGES FOR ROLE supabase_admin IN SCHEMA public GRANT ALL ON TABLES  TO anon;
-ALTER DEFAULT PRIVILEGES FOR ROLE supabase_admin IN SCHEMA public GRANT ALL ON TABLES  TO authenticated;
-ALTER DEFAULT PRIVILEGES FOR ROLE supabase_admin IN SCHEMA public GRANT ALL ON TABLES  TO service_role;
 
 
 --
