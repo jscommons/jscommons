@@ -9,7 +9,7 @@ const footerLink = `
 `
 
 export default function Reply (props) {
-  const [reply, setReply] = useState(props.reply)
+  const [reply] = useState(props.reply)
   const [showReplyForm, setShowReplyForm] = useState(false)
 
   return (

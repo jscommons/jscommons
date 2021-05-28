@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Reply from './Reply.js'
 
 export default function ReplyList (props) {
-  const [replies, setReplies] = useState(props.replies)
+  const [replies] = useState(props.replies)
 
   return (
     <ul>
