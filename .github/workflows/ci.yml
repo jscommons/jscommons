@@ -7,12 +7,20 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: node:15.4-buster
     timeout-minutes: 3
+    services:
+      postgres:
+        image: postgres:12.3
+        env:
+          POSTGRES_DB: postgres
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: gettinPlayed
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
       - name: Install
         run: yarn
       - name: Lint

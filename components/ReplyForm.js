@@ -16,7 +16,7 @@ export default function ReplyForm (props) {
 
     const { data, error } = await supabase
       .from('posts')
-      .insert({ ...values, author: ctx.profile.id })
+      .insert({ ...values, profile_id: ctx.profile.id })
 
     if (error) {
       console.error(error)

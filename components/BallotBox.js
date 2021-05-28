@@ -24,8 +24,8 @@ export default function BallotBox (props) {
         .from('votes')
         .upsert({
           ...vote,
-          postId: post.id,
-          profileId: ctx.profile.id,
+          post_id: post.id,
+          profile_id: ctx.profile.id,
           value
         })
 
@@ -33,7 +33,7 @@ export default function BallotBox (props) {
         console.error(error)
       } else {
         console.info('Vote data', data)
-        props.onVote(post, data)
+        if (props.onVote) props.onVote(post, data)
       }
     }
   }
