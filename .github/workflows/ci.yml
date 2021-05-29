@@ -26,7 +26,9 @@ jobs:
       - name: Lint
         run: yarn lint
       - name: Supabase
-        run: docker-compose --file .supabase/docker/docker-compose.yml --project-name supabase up -d
+        run: |
+          docker-compose --file .supabase/docker/docker-compose.yml --project-name supabase up -d
+          sleep 30
       - name: Init DB
         run: PGPASSWORD=postgres psql -h localhost -p 5435 -U postgres < db/schema.sql
       - name: Test
