@@ -30,6 +30,7 @@
     "@ianwalter/eslint-config-react": "^4.1.0",
     "autoprefixer": "^10.2.5",
     "postcss": "^8.3.0",
+    "supabase": "^0.4.1",
     "tailwindcss": "^2.1.2"
   },
   "renovate": {
