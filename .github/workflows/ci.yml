@@ -33,7 +33,7 @@ jobs:
         run: yarn test
       - name: Capture Log
         if: ${{ failure() || cancelled() }}
-        run: docker compose --file .supabase/docker/docker-compose.yml  logs > compose.log
+        run: docker-compose --file .supabase/docker/docker-compose.yml logs > compose.log
       - name: Upload Artifacts
         if: ${{ failure() || cancelled() }}
         uses: actions/upload-artifact@v2
