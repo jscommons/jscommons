@@ -28,6 +28,6 @@ jobs:
       - name: Supabase
         run: yarn supabase start
       - name: Init DB
-        run: PGPASSWORD=postgres psql -h localhost -U postgres < db/schema.sql
+        run: PGPASSWORD=postgres psql -h localhost -p 5435 -U postgres < db/schema.sql
       - name: Test
         run: yarn test
