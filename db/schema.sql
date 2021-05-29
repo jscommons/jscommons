@@ -152,6 +152,92 @@ ALTER FUNCTION public.get_top_posts(
     OUT vote jsonb
 ) OWNER TO postgres;
 
+
+--
+-- Name: get_threaded_post(uuid, uuid); Type: FUNCTION; Schema: public; Owner: postgres
+--
+
+CREATE FUNCTION public.get_threaded_post(
+    given_post_id uuid,
+    given_profile_id uuid,
+    OUT id uuid,
+    OUT title character varying,
+    OUT link character varying,
+    OUT body text,
+    OUT profile_id uuid,
+    OUT created_at timestamp with time zone,
+    OUT updated_at timestamp with time zone,
+    OUT parent_id uuid,
+    OUT depth integer,
+    OUT score double precision,
+    OUT reply_count numeric,
+    OUT total_score double precision,
+    OUT author jsonb,
+    OUT vote jsonb
+) RETURNS SETOF record
+LANGUAGE sql
+AS $$
+    with recursive
+    max_depth as (
+        select max(depth) max_depth from scored_posts
+    ),
+    threaded_posts as (
+        select scored_posts.*, jsonb_build_object('count', 0)::JSONB replies
+        from scored_posts, max_depth
+        where depth = max_depth
+
+        union
+
+        (
+            select
+                (branch_parent).*,
+                jsonb_build_object(
+                    'list',
+                    jsonb_agg(branch_child),
+                    'count',
+                    count(*)
+                )
+            from (
+                select branch_parent, to_jsonb(branch_child) as branch_child
+                from scored_posts branch_parent
+                join threaded_posts branch_child
+                    on branch_child.parent_id = branch_parent.id
+            ) branch
+            group by branch.branch_parent
+
+            union
+
+            select c.*, jsonb_build_object('count', 0)::JSONB
+            from scored_posts c
+            where not exists (
+            select 1
+            from scored_posts hypothetical_child
+            where hypothetical_child.parent_id = c.id
+            )
+        )
+    )
+    select * from threaded_posts where id = post_id
+$$;
+
+
+ALTER FUNCTION public.get_threaded_post(
+    profile_id uuid,
+    OUT id uuid,
+    OUT title character varying,
+    OUT link character varying,
+    OUT body text, OUT profile_id uuid,
+    OUT created_at timestamp with time zone,
+    OUT updated_at timestamp with time zone,
+    OUT parent_id uuid,
+    OUT depth integer,
+    OUT score double precision,
+    OUT reply_count numeric,
+    OUT total_score double precision,
+    OUT author jsonb,
+    OUT vote jsonb
+) OWNER TO postgres;
+
+
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
@@ -313,91 +399,6 @@ CREATE VIEW public.scored_posts AS
 
 ALTER TABLE public.scored_posts OWNER TO postgres;
 
---
--- Name: threaded_posts; Type: VIEW; Schema: public; Owner: postgres
---
-
-CREATE VIEW public.threaded_posts AS
- WITH RECURSIVE max_depth AS (
-         SELECT max(scored_posts.depth) AS max_depth
-           FROM public.scored_posts
-        ), threaded_posts AS (
-         SELECT scored_posts.id,
-            scored_posts.title,
-            scored_posts.link,
-            scored_posts.body,
-            scored_posts.profile_id,
-            scored_posts.created_at,
-            scored_posts.updated_at,
-            scored_posts.parent_id,
-            scored_posts.depth,
-            scored_posts.score,
-            scored_posts.reply_count,
-            scored_posts.total_score,
-            scored_posts.author,
-            jsonb_build_object('count', 0) AS replies
-           FROM public.scored_posts,
-            max_depth
-          WHERE (scored_posts.depth = max_depth.max_depth)
-        UNION (
-                 SELECT (branch.branch_parent).id AS id,
-                    (branch.branch_parent).title AS title,
-                    (branch.branch_parent).link AS link,
-                    (branch.branch_parent).body AS body,
-                    (branch.branch_parent).profile_id AS profile_id,
-                    (branch.branch_parent).created_at AS created_at,
-                    (branch.branch_parent).updated_at AS updated_at,
-                    (branch.branch_parent).parent_id AS parent_id,
-                    (branch.branch_parent).depth AS depth,
-                    (branch.branch_parent).score AS score,
-                    (branch.branch_parent).reply_count AS reply_count,
-                    (branch.branch_parent).total_score AS total_score,
-                    (branch.branch_parent).author AS author,
-                    jsonb_build_object('list', jsonb_agg(branch.branch_child), 'count', count(*)) AS jsonb_build_object
-                   FROM ( SELECT branch_parent.*::public.scored_posts AS branch_parent,
-                            to_jsonb(branch_child.*) AS branch_child
-                           FROM (public.scored_posts branch_parent
-                             JOIN threaded_posts branch_child ON ((branch_child.parent_id = branch_parent.id)))) branch
-                  GROUP BY branch.branch_parent
-                UNION
-                 SELECT c.id,
-                    c.title,
-                    c.link,
-                    c.body,
-                    c.profile_id,
-                    c.created_at,
-                    c.updated_at,
-                    c.parent_id,
-                    c.depth,
-                    c.score,
-                    c.reply_count,
-                    c.total_score,
-                    c.author,
-                    jsonb_build_object('count', 0) AS jsonb_build_object
-                   FROM public.scored_posts c
-                  WHERE (NOT (EXISTS ( SELECT 1
-                           FROM public.scored_posts hypothetical_child
-                          WHERE (hypothetical_child.parent_id = c.id))))
-        )
-        )
- SELECT threaded_posts.id,
-    threaded_posts.title,
-    threaded_posts.link,
-    threaded_posts.body,
-    threaded_posts.profile_id,
-    threaded_posts.created_at,
-    threaded_posts.updated_at,
-    threaded_posts.parent_id,
-    threaded_posts.depth,
-    threaded_posts.score,
-    threaded_posts.reply_count,
-    threaded_posts.total_score,
-    threaded_posts.author,
-    threaded_posts.replies
-   FROM threaded_posts;
-
-
-ALTER TABLE public.threaded_posts OWNER TO postgres;
 
 --
 -- Name: posts posts_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres

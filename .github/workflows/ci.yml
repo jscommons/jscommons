@@ -26,8 +26,16 @@ jobs:
       - name: Lint
         run: yarn lint
       - name: Supabase
-        run: yarn supabase start
+        run: |
+          docker-compose --file .supabase/docker/docker-compose.yml --project-name supabase up &> compose.log &
+          sleep 10
       - name: Init DB
         run: PGPASSWORD=postgres psql -h localhost -p 5435 -U postgres < db/schema.sql
       - name: Test
         run: yarn test
+      - name: Upload Artifacts
+        if: ${{ failure() || cancelled() }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: compose-${{ github.run_id }}
+          path: compose.log
