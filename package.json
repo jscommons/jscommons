@@ -28,7 +28,7 @@
   "devDependencies": {
     "@ianwalter/bff": "^11.0.0",
     "@ianwalter/eslint-config-react": "^4.1.0",
-    "autoprefixer": "^10.2.5",
+    "autoprefixer": "^10.2.6",
     "postcss": "^8.3.0",
     "supabase": "^0.4.1",
     "tailwindcss": "^2.1.2"
