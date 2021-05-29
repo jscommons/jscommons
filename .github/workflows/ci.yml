@@ -26,11 +26,14 @@ jobs:
       - name: Lint
         run: yarn lint
       - name: Supabase
-        run: docker-compose --file .supabase/docker/docker-compose.yml --project-name supabase up -d > compose.log
+        run: docker-compose --file .supabase/docker/docker-compose.yml --project-name supabase up -d
       - name: Init DB
         run: PGPASSWORD=postgres psql -h localhost -p 5435 -U postgres < db/schema.sql
       - name: Test
         run: yarn test
+      - name: Capture Log
+        if: ${{ failure() || cancelled() }}
+        run: docker compose logs > compose.log
       - name: Upload Artifacts
         if: ${{ failure() || cancelled() }}
         uses: actions/upload-artifact@v2
