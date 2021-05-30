@@ -3,7 +3,6 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 import clsx from 'clsx'
 import AppPage from '../../components/AppPage.js'
-import { supabase } from '../../lib/initSupabase.js'
 import container from '../../styles/container.js'
 import Reply from '../../components/Reply.js'
 import ReplyForm from '../../components/ReplyForm.js'
@@ -12,24 +11,24 @@ import footerLink from '../../styles/footerLink.js'
 
 export default function PostPage () {
   const router = useRouter()
-  const [post, setPost] = useState()
+  const [post] = useState()
 
   useEffect(
     () => {
       if (router.query.id) {
-        supabase
-          .from('threaded_posts')
-          .select('*')
-          .eq('id', router.query.id)
-          .then(({ data, error }) => {
-            if (error) {
-              console.error(error)
-            } else {
-              console.info('Post data', data)
-              const [post] = data || []
-              setPost(post)
-            }
-          })
+        // supabase
+        //   .from('threaded_posts')
+        //   .select('*')
+        //   .eq('id', router.query.id)
+        //   .then(({ data, error }) => {
+        //     if (error) {
+        //       console.error(error)
+        //     } else {
+        //       console.info('Post data', data)
+        //       const [post] = data || []
+        //       setPost(post)
+        //     }
+        //   })
       }
     },
     [

@@ -2,7 +2,6 @@ import { useContext } from 'react'
 import { HiArrowCircleUp } from 'react-icons/hi'
 import clsx from 'clsx'
 import { AppContext } from '../lib/context.js'
-import { supabase } from '../lib/initSupabase.js'
 
 export default function BallotBox (props) {
   const ctx = useContext(AppContext)
@@ -17,24 +16,24 @@ export default function BallotBox (props) {
   }
 
   async function vote (post) {
-    const [vote] = post.votes || []
-    const value = vote?.value === 1 ? 0 : 1
+    // const [vote] = post.votes || []
+    // const value = vote?.value === 1 ? 0 : 1
     if (ctx.profile.id) {
-      const { data, error } = await supabase
-        .from('votes')
-        .upsert({
-          ...vote,
-          post_id: post.id,
-          profile_id: ctx.profile.id,
-          value
-        })
+      // const { data, error } = await supabase
+      //   .from('votes')
+      //   .upsert({
+      //     ...vote,
+      //     post_id: post.id,
+      //     profile_id: ctx.profile.id,
+      //     value
+      //   })
 
-      if (error) {
-        console.error(error)
-      } else {
-        console.info('Vote data', data)
-        if (props.onVote) props.onVote(post, data)
-      }
+      // if (error) {
+      //   console.error(error)
+      // } else {
+      //   console.info('Vote data', data)
+      //   if (props.onVote) props.onVote(post, data)
+      // }
     }
   }
 

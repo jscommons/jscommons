@@ -2,11 +2,9 @@ import 'tailwindcss/tailwind.css'
 import 'nprogress/nprogress.css'
 import { useState } from 'react'
 import Router from 'next/router'
-import { Auth } from '@supabase/ui'
 import * as dotter from '@generates/dotter'
 import { merge } from '@generates/merger'
 import nprogress from 'nprogress'
-import { supabase } from '../lib/initSupabase.js'
 import { defaultContext, AppContext } from '../lib/context.js'
 
 nprogress.configure({ showSpinner: false })
@@ -27,10 +25,8 @@ export default function App ({ Component, pageProps }) {
   }
 
   return (
-    <Auth.UserContextProvider supabaseClient={supabase}>
-      <AppContext.Provider value={ctx}>
-        <Component {...pageProps} />
-      </AppContext.Provider>
-    </Auth.UserContextProvider>
+    <AppContext.Provider value={ctx}>
+      <Component {...pageProps} />
+    </AppContext.Provider>
   )
 }

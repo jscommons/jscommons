@@ -1,31 +1,30 @@
-import { useContext } from 'react'
-import { useRouter } from 'next/router'
+// import { useContext } from 'react'
+// import { useRouter } from 'next/router'
 import { Formik, Form } from 'formik'
 import clsx from 'clsx'
-import { supabase } from '../lib/initSupabase.js'
-import { AppContext } from '../lib/context.js'
+// import { AppContext } from '../lib/context.js'
 import TextareaControl from '../components/controls/TextareaControl.js'
 import primaryButton from '../styles/buttons/primaryButton.js'
 
 export default function ReplyForm (props) {
-  const ctx = useContext(AppContext)
-  const router = useRouter()
+  // const ctx = useContext(AppContext)
+  // const router = useRouter()
 
   async function submitPost (values, { setSubmitting }) {
     setSubmitting(true)
 
-    const { data, error } = await supabase
-      .from('posts')
-      .insert({ ...values, profile_id: ctx.profile.id })
+    // const { data, error } = await supabase
+    //   .from('posts')
+    //   .insert({ ...values, profile_id: ctx.profile.id })
 
-    if (error) {
-      console.error(error)
-    } else {
-      console.info('Post data', data)
-      const [post] = data || []
-      // TODO:
-      router.push(`/posts/${post.id}`)
-    }
+    // if (error) {
+    //   console.error(error)
+    // } else {
+    //   console.info('Post data', data)
+    //   const [post] = data || []
+    //   // TODO:
+    //   router.push(`/posts/${post.id}`)
+    // }
   }
 
   return (
