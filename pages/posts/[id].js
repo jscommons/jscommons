@@ -2,33 +2,31 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import clsx from 'clsx'
+import { http } from '@ianwalter/http'
 import AppPage from '../../components/AppPage.js'
 import container from '../../styles/container.js'
 import Reply from '../../components/Reply.js'
 import ReplyForm from '../../components/ReplyForm.js'
 import PostAuthor from '../../components/PostAuthor.js'
 import footerLink from '../../styles/footerLink.js'
+import AppLink from '../../components/AppLink.js'
 
 export default function PostPage () {
   const router = useRouter()
-  const [post] = useState()
+  const [post, setPost] = useState()
 
   useEffect(
     () => {
       if (router.query.id) {
-        // supabase
-        //   .from('threaded_posts')
-        //   .select('*')
-        //   .eq('id', router.query.id)
-        //   .then(({ data, error }) => {
-        //     if (error) {
-        //       console.error(error)
-        //     } else {
-        //       console.info('Post data', data)
-        //       const [post] = data || []
-        //       setPost(post)
-        //     }
-        //   })
+        http
+          .get(`/api/posts/${router.query.id}`)
+          .then(res => {
+            console.info('Post data', res.body)
+            setPost(res.body)
+          })
+          .catch(err => {
+            console.error(err)
+          })
       }
     },
     [
@@ -43,13 +41,17 @@ export default function PostPage () {
         {post && (
           <div>
 
-            <h1 className="text-2xl font-medium">
-              {post.title}
-            </h1>
-
-            <p className="text-xl mt-2">
-              {post.body}
-            </p>
+            <AppLink
+              href={post.link || ('/posts/' + post.id)}
+              className={clsx(
+                'text-xl font-medium dark:text-gray-300',
+                'dark:hover:text-gray-100'
+              )}
+            >
+              <h1 className="text-2xl font-medium">
+                {post.title}
+              </h1>
+            </AppLink>
 
             <div className="text-gray-400">
 
@@ -70,6 +72,10 @@ export default function PostPage () {
               )}
 
             </div>
+
+            <p className="text-xl mt-2">
+              {post.body}
+            </p>
 
             <ReplyForm parentId={post.id} />
 

@@ -42,15 +42,15 @@ export default function Header () {
       </nav>
 
       <nav className="ml-auto">
-        {ctx.profile.username
+        {ctx.account.username
           ? (
               <div className="ml-auto">
-                {ctx.profile.username}
+                {ctx.account.username}
               </div>
             )
           : (
-              <Link href="/login">
-                <a>Login</a>
+              <Link href="/sign-in">
+                <a>Sign In</a>
               </Link>
             )
         }

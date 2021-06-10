@@ -1,6 +1,6 @@
 import AppPage from '../components/AppPage.js'
 
-export default function Privacy () {
+export default function PrivacyPage () {
   return (
     <AppPage>
       TODO

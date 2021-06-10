@@ -8,8 +8,8 @@ export default function BrandHeading () {
         <a>
           <Image
             src="/img/jscommons-logo-yellow.svg"
-            height="100"
-            width="262.5"
+            height="60"
+            width="175"
             alt="JS Commons"
           />
         </a>

@@ -16,7 +16,7 @@ export default function PostList (props) {
   function updatePosts (post, data, value) {
     const withUpdatedVote = p => {
       if (p.id === post.id) {
-        return { ...post, votes: data, score: post.score + (value || -1) }
+        return { ...post, votes: [data], score: post.score + (value || -1) }
       }
       return p
     }

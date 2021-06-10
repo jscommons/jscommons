@@ -1,0 +1,47 @@
+version: '3.7'
+
+services:
+
+  redis:
+    image: redis
+    ports:
+      - 6379:6379
+
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=$DB_PASS
+      - MYSQL_DATABASE=$DB_NAME
+      - MYSQL_USER=$DB_USER
+      - MYSQL_PASSWORD=$DB_PASS
+
+  dockerhost:
+    image: qoomon/docker-host
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    restart: on-failure
+
+  hub:
+    image: selenium/hub:4.0.0-beta-4-prerelease-20210527
+    ports:
+      - "4442:4442"
+      - "4443:4443"
+      - "4444:4444"
+
+  chrome:
+    image: selenium/node-chrome:4.0.0-beta-4-prerelease-20210527
+    depends_on:
+      - dockerhost
+      - hub
+    ports:
+      - "5900:5900"
+    environment:
+      SE_EVENT_BUS_HOST: hub
+      SE_EVENT_BUS_PUBLISH_PORT: 4442
+      SE_EVENT_BUS_SUBSCRIBE_PORT: 4443
+      VNC_NO_PASSWORD: 1
+      JAVA_OPTS: -Djava.net.preferIPv4Stack=true -Dwebdriver.chrome.whitelistedIps=

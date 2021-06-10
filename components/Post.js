@@ -25,13 +25,13 @@ export default function Post (props) {
 
         <div className="text-gray-400">
 
-          <PostAuthor post={props.post} />
+          {props.post.author && <PostAuthor post={props.post} />}
 
           <span className="mx-2">•</span>
 
           <Link href={'/posts/' + props.post.id}>
             <a className={footerLink}>
-              {props.post.reply_count} Replies
+              {props.post.replyCount} Replies
             </a>
           </Link>
 

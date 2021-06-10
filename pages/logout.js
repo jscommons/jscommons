@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 
-export default function Logout () {
+export default function LogoutPage () {
   const router = useRouter()
 
   useEffect(

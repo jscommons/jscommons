@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import AppPage from '../../components/AppPage.js'
 
-export default function Profile () {
+export default function ProfilePage () {
   const router = useRouter()
   const [profile] = useState()
 

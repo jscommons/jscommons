@@ -1,32 +1,31 @@
-// import { useContext } from 'react'
-// import { useRouter } from 'next/router'
+import { useContext } from 'react'
+import { useRouter } from 'next/router'
 import { Formik, Form } from 'formik'
 import clsx from 'clsx'
+import { http } from '@ianwalter/http'
 import AppPage from '../components/AppPage.js'
-// import { AppContext } from '../lib/context.js'
+import { AppContext } from '../lib/context.js'
 import TextControl from '../components/controls/TextControl.js'
 import container from '../styles/container.js'
 import TextareaControl from '../components/controls/TextareaControl.js'
 import primaryButton from '../styles/buttons/primaryButton.js'
 
-export default function Submit () {
-  // const ctx = useContext(AppContext)
-  // const router = useRouter()
+export default function SubmitPage () {
+  const ctx = useContext(AppContext)
+  const router = useRouter()
 
   async function submitPost (values, { setSubmitting }) {
     setSubmitting(true)
-
-    // const { data, error } = await supabase
-    //   .from('posts')
-    //   .insert({ ...values, author: ctx.profile.id })
-
-    // if (error) {
-    //   console.error(error)
-    // } else {
-    //   console.info('Post data', data)
-    //   const [post] = data || []
-    //   router.push(`/posts/${post.id}`)
-    // }
+    try {
+      const body = { ...values, author: ctx.profile.id }
+      const res = await http.post('/api/posts', { body })
+      console.info('Post data', res.body)
+      router.push(`/posts/${res.body.id}`)
+    } catch (err) {
+      console.error(err)
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (

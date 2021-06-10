@@ -1,6 +1,6 @@
 import AppPage from '../components/AppPage.js'
 
-export default function About () {
+export default function AboutPage () {
   return (
     <AppPage>
       TODO

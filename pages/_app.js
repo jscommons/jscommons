@@ -1,6 +1,8 @@
 import 'tailwindcss/tailwind.css'
 import 'nprogress/nprogress.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { nanoid } from 'nanoid'
+import { http } from '@ianwalter/http'
 import Router from 'next/router'
 import * as dotter from '@generates/dotter'
 import { merge } from '@generates/merger'
@@ -20,9 +22,25 @@ export default function App ({ Component, pageProps }) {
     if (typeof key === 'string') key = dotter.set({}, key, value)
     const updated = merge({}, ctx, key)
 
+    // Add the global http csrf-token header.
+    http.options.headers = { 'csrf-token': updated.csrfToken }
+
     // Update the context state.
     setCtx(updated)
   }
+
+  useEffect(
+    () => {
+      http.before = function httpBeforeHook (request) {
+        request.headers['x-request-id'] = nanoid()
+      }
+
+      if (ctx.csrfToken === undefined) {
+        http.get('/api/session').then(res => ctx.update(res.body))
+      }
+    },
+    [ctx]
+  )
 
   return (
     <AppContext.Provider value={ctx}>

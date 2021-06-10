@@ -1,6 +1,6 @@
 import AppPage from '../components/AppPage.js'
 
-export default function Terms () {
+export default function TermsPage () {
   return (
     <AppPage>
       TODO
