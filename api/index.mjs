@@ -3,7 +3,10 @@ import nrg from '@ianwalter/nrg'
 import queryPosts from './middleware/queryPosts.js'
 import getPost from './middleware/getPost.js'
 import addPost from './middleware/addPost.js'
+import updatePost from './middleware/updatePost.js'
 import vote from './middleware/vote.js'
+import validatePost from './middleware/validatePost.js'
+import validateVote from './middleware/validateVote.js'
 
 const app = nrg.createApp({
   name: 'JS Commons',
@@ -19,8 +22,12 @@ app.get('/api/posts', queryPosts)
 
 app.get('/api/posts/:id', getPost)
 
-app.post('/api/posts', addPost)
+app.post('/api/posts', validatePost, addPost)
 
-app.post('/api/vote', vote)
+// Allow users to update their post.
+app.put('/api/posts/:id', validatePost, updatePost)
+
+// Allow users to vote on a post.
+app.post('/api/vote', validateVote, vote)
 
 export default app
