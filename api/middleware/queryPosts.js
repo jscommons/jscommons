@@ -6,7 +6,7 @@ export default async function queryPosts (ctx) {
     orderBy = 'score'
   } = ctx.query
 
-  ctx.body = await Post.query()
+  const query = Post.query()
     .select(
       'posts.*',
       raw(`
@@ -21,8 +21,13 @@ export default async function queryPosts (ctx) {
         posts.reply_count
       `).as('score')
     )
-    .withGraphJoined('[author, votes]')
-    .where('votes.accountId', ctx.session.account.id)
-    .orderBy(orderBy, 'DESC')
-    .limit(30)
+    .withGraphJoined('author')
+
+  if (ctx.session.account?.id) {
+    query
+      .withGraphJoined('votes')
+      .modifyGraph(b => b.where('votes.accountId', ctx.session.account.id))
+  }
+
+  ctx.body = await query.orderBy(orderBy, 'DESC').limit(30)
 }

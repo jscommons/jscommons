@@ -34,9 +34,7 @@ export default function AppPage ({ children, ...props }) {
   )
 
   return (
-    <div className={clsx(
-      'dark:bg-gray-900 dark:text-gray-300 flex flex-col min-h-screen'
-    )}>
+    <div className="flex flex-col min-h-screen">
 
       <Header {...props} />
 

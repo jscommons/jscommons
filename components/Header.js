@@ -16,17 +16,17 @@ export default function Header () {
   const ctx = useContext(AppContext)
 
   return (
-    <div className={clsx(container, 'flex items-center mt-4')}>
+    <div className={clsx(container, 'flex items-center mt-6')}>
 
       <BrandHeading />
 
       <nav
-        className="flex flex-wrap ml-8 mt-8"
+        className="flex flex-wrap items-center ml-8"
         aria-label="Header"
       >
 
         {links.map(link => (
-          <div key={link.name} className="px-5 py-2">
+          <div key={link.name} className="px-5">
             <AppLink
               href={link.href}
               className={clsx(
@@ -42,10 +42,12 @@ export default function Header () {
       </nav>
 
       <nav className="ml-auto">
-        {ctx.account.username
+        {ctx.account.id
           ? (
               <div className="ml-auto">
                 {ctx.account.username}
+                <br />
+                <a onClick={ctx.signOut}>Sign Out</a>
               </div>
             )
           : (

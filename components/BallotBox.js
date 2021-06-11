@@ -6,7 +6,7 @@ import { AppContext } from '../lib/context.js'
 
 export default function BallotBox (props) {
   const ctx = useContext(AppContext)
-  const [vote] = props.post.votes
+  const [vote] = props.post.votes || []
 
   let voteColor = 'text-gray-600'
   if (vote?.value === 1) {

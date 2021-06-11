@@ -1,4 +1,4 @@
-import { useEffect, useContext } from 'react'
+import { useContext } from 'react'
 import { useRouter } from 'next/router'
 import clsx from 'clsx'
 import { http } from '@ianwalter/http'
@@ -10,32 +10,6 @@ import container from '../styles/container.js'
 export default function SignInPage () {
   const ctx = useContext(AppContext)
   const router = useRouter()
-
-  useEffect(
-    () => {
-      // if (user && !ctx.profile.id) {
-      //   supabase
-      //     .from('profiles')
-      //     .select('*')
-      //     .eq('user_id', user.id)
-      //     .then(({ data, error }) => {
-      //       if (error) {
-      //         console.error(error)
-      //       } else {
-      //         console.info('Profile data', data)
-      //         const [profile] = data || []
-      //         ctx.update('profile', profile)
-      //         router.push('/')
-      //       }
-      //     })
-      // }
-    },
-    [
-      // user,
-      ctx,
-      router
-    ]
-  )
 
   async function signIn (body) {
     try {
@@ -54,20 +28,24 @@ export default function SignInPage () {
 
   return (
     <AppPage>
-      <div className={clsx(container, 'my-8')}>
+      <div className={clsx(container, 'my-16')}>
 
-        <h1>Login</h1>
+        <SignInForm
+          onSubmit={signIn}
+          header={(
+            <div className="text-center mb-4">
 
-        <div className="max-w-xl mx-auto mb-12 text-gray-300">
-          {/* <Auth
-            supabaseClient={supabase}
-            // providers={['github']}
-            socialLayout="horizontal"
-            socialButtonSize="xlarge"
-          /> */}
-        </div>
+              <h1 className="text-2xl font-bold mt-0">
+                Welcome Back!
+              </h1>
 
-        <SignInForm onSubmit={signIn} />
+              <div className="text-sm text-gray-600 mt-2">
+                Enter your account credentials below to sign in.
+              </div>
+
+            </div>
+          )}
+        />
 
       </div>
     </AppPage>

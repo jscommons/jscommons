@@ -1,13 +1,18 @@
 import 'tailwindcss/tailwind.css'
 import 'nprogress/nprogress.css'
 import { useState, useEffect } from 'react'
+import { global } from '@stitches/react'
 import { nanoid } from 'nanoid'
 import { http } from '@ianwalter/http'
-import Router from 'next/router'
+import Router, { useRouter } from 'next/router'
 import * as dotter from '@generates/dotter'
 import { merge } from '@generates/merger'
 import nprogress from 'nprogress'
 import { defaultContext, AppContext } from '../lib/context.js'
+
+const globalStyles = global({
+  body: { backgroundColor: '#171717', color: '#D4D4D4' }
+})
 
 nprogress.configure({ showSpinner: false })
 Router.events.on('routeChangeStart', () => nprogress.start())
@@ -15,7 +20,9 @@ Router.events.on('routeChangeComplete', () => nprogress.done())
 Router.events.on('routeChangeError', () => nprogress.done())
 
 export default function App ({ Component, pageProps }) {
+  globalStyles()
   const [ctx, setCtx] = useState(defaultContext)
+  const router = useRouter()
 
   ctx.update = function updateContext (key, value) {
     // Merge the updates values into the context object.
@@ -29,6 +36,12 @@ export default function App ({ Component, pageProps }) {
     setCtx(updated)
   }
 
+  ctx.signOut = async function signOut () {
+    await http.delete('/api/sign-out')
+    setCtx(defaultContext)
+    router.push('/')
+  }
+
   useEffect(
     () => {
       http.before = function httpBeforeHook (request) {
@@ -36,7 +49,10 @@ export default function App ({ Component, pageProps }) {
       }
 
       if (ctx.csrfToken === undefined) {
-        http.get('/api/session').then(res => ctx.update(res.body))
+        http.get('/api/session').then(res => {
+          console.info('Session data', res.body)
+          ctx.update(res.body)
+        })
       }
     },
     [ctx]

@@ -1,19 +1,18 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { StyledLink } from '@generates/swag'
 
 export default function BrandHeading () {
   return (
-    <h1 className="text-gray-100 text-3xl">
-      <Link href="/">
-        <a>
-          <Image
-            src="/img/jscommons-logo-yellow.svg"
-            height="60"
-            width="175"
-            alt="JS Commons"
-          />
-        </a>
-      </Link>
-    </h1>
+    <Link href="/">
+      <StyledLink css={{ height: '35px' }}>
+        <Image
+          src="/img/jscommons-logo-yellow.svg"
+          height="35"
+          width="150"
+          alt="JS Commons"
+        />
+      </StyledLink>
+    </Link>
   )
 }

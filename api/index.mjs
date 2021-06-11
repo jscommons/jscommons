@@ -1,5 +1,5 @@
 import nrg from '@ianwalter/nrg'
-
+import Account from './models/Account.mjs'
 import queryPosts from './middleware/queryPosts.js'
 import getPost from './middleware/getPost.js'
 import addPost from './middleware/addPost.js'
@@ -11,12 +11,17 @@ import validateVote from './middleware/validateVote.js'
 const app = nrg.createApp({
   name: 'JS Commons',
   next: { enabled: true },
-  db: { client: 'mysql' }
+  db: { client: 'mysql' },
+  accounts: {
+    models: { Account }
+  }
 })
 
 app.get('/api/session', ...nrg.session)
 
 app.post('/api/sign-in', ...nrg.login)
+
+app.delete('/api/sign-out', ...nrg.logout)
 
 app.get('/api/posts', queryPosts)
 
