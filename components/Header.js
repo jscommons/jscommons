@@ -1,6 +1,8 @@
 import { useContext } from 'react'
 import Link from 'next/link'
 import clsx from 'clsx'
+import { StyledDiv } from '@generates/swag'
+import { UserMenu, StyledUserMenuItem } from '@generates/swag-squad'
 import { AppContext } from '../lib/context.js'
 import BrandHeading from '../components/BrandHeading.js'
 import container from '../styles/container.js'
@@ -44,11 +46,23 @@ export default function Header () {
       <nav className="ml-auto">
         {ctx.account.id
           ? (
-              <div className="ml-auto">
-                {ctx.account.username}
-                <br />
-                <a onClick={ctx.signOut}>Sign Out</a>
-              </div>
+              <UserMenu name={ctx.account.username}>
+                <StyledDiv css={{ display: 'grid' }}>
+
+                  <StyledUserMenuItem>
+
+                    Account Settings
+
+                  </StyledUserMenuItem>
+
+                  <StyledUserMenuItem onClick={ctx.signOut}>
+
+                    Sign Out
+
+                  </StyledUserMenuItem>
+
+                </StyledDiv>
+              </UserMenu>
             )
           : (
               <Link href="/sign-in">
