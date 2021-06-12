@@ -489,20 +489,16 @@
     "@generates/modulizer" "^7.0.2"
     koa-compose "^4.1.0"
 
-"@generates/swag-squad@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@generates/swag-squad/-/swag-squad-0.0.4.tgz#c505ca4f2c3ef7f3c138b5e2cc8e6e7a37497592"
-  integrity sha512-qRHE/0XV+PSEYzwbHbUzKuTE8nKqnCSwyWaA1alz2IwAfNTrvmbLCD2CnhRqpa3h6p1NPr2sAS18f4VQU1zrDQ==
-  dependencies:
-    "@generates/swag" "^0.0.6"
-
-"@generates/swag@^0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@generates/swag/-/swag-0.0.6.tgz#a4d32e62759511b89942dc539a53819ab0e670b3"
-  integrity sha512-0EQnh6ibf3f2Ae+WXMob2d1y98yaZerg4YslKZ65vd6fZmVQhY+BIAHqqeMhuKRnrrhgOGXEDWEIznk3JnTtFA==
+"@generates/swag-squad@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@generates/swag-squad/-/swag-squad-0.0.5.tgz#d2ebb6da24c3ef3bff9746b9857335b26b6835aa"
+  integrity sha512-hlyi7rVfKdDOt7+oKjUOzlrv4pqDfumU4Ecj4gbBPM/U9CeVy9UhnE/dxfHTEc99ZQ/shgzCd/uFnFXLVQK6nQ==
   dependencies:
     "@generates/merger" "^0.1.3"
-    react-icons "^4.2.0"
+    "@generates/swag" "^0.0.7"
+    "@popperjs/core" "^2.9.2"
+    boring-avatars "^1.5.6"
+    react-popper "^2.2.5"
 
 "@generates/swag@^0.0.7":
   version "0.0.7"
@@ -857,6 +853,11 @@
   version "0.14.0"
   resolved "https://registry.yarnpkg.com/@opentelemetry/context-base/-/context-base-0.14.0.tgz#c67fc20a4d891447ca1a855d7d70fa79a3533001"
   integrity sha512-sDOAZcYwynHFTbLo6n8kIbLiVF3a3BLkrmehJUyEbT9F+Smbi47kLGS2gG2g0fjBLR/Lr1InPD7kXL7FaTqEkw==
+
+"@popperjs/core@^2.9.2":
+  version "2.9.2"
+  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.9.2.tgz#adea7b6953cbb34651766b0548468e743c6a2353"
+  integrity sha512-VZMYa7+fXHdwIq1TDhSXoVmSPEGM/aa+6Aiq3nVVJ9bXr24zScr+NlKFKC3iPljA7ho/GAZr+d2jOf5GIRC30Q==
 
 "@rollup/plugin-babel@^5.3.0":
   version "5.3.0"
@@ -1488,6 +1489,11 @@ boolbase@^1.0.0, boolbase@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
   integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
+
+boring-avatars@^1.5.6:
+  version "1.5.6"
+  resolved "https://registry.yarnpkg.com/boring-avatars/-/boring-avatars-1.5.6.tgz#a0e9e7bc9d4412b81a6b50fba25cae50fc1eeadc"
+  integrity sha512-9rR8OixvyAGEvWvcQq62hcn0EomIGMM7XRs8SzPLkpT08wujVoygueKHkmQxIfZXfcW+pD2djfDqj66i3n69cA==
 
 brace-expansion@^1.1.7:
   version "1.1.11"
@@ -4795,7 +4801,7 @@ lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.21:
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
-loose-envify@^1.1.0, loose-envify@^1.4.0:
+loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/loose-envify/-/loose-envify-1.4.0.tgz#71ee51fa7be4caec1a63839f7e682d8132d30caf"
   integrity sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==
@@ -6131,6 +6137,11 @@ react-fast-compare@^2.0.1:
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-2.0.4.tgz#e84b4d455b0fec113e0402c329352715196f81f9"
   integrity sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==
 
+react-fast-compare@^3.0.1:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-3.2.0.tgz#641a9da81b6a6320f270e89724fb45a0b39e43bb"
+  integrity sha512-rtGImPZ0YyLrscKI9xTpV8psd6I8VAtjKCzQDlzyDvqJA8XOW78TXYQwNRNd8g8JZnDu8q9Fu/1v4HPAVwVdHA==
+
 react-hook-form@^7.8.4:
   version "7.8.4"
   resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.8.4.tgz#4405b242db7b946f387f2a6c01f92390a2564893"
@@ -6150,6 +6161,14 @@ react-is@^17.0.1:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
+
+react-popper@^2.2.5:
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/react-popper/-/react-popper-2.2.5.tgz#1214ef3cec86330a171671a4fbcbeeb65ee58e96"
+  integrity sha512-kxGkS80eQGtLl18+uig1UIf9MKixFSyPxglsgLBxlYnyDf65BiY9B3nZSc6C9XUNDgStROB0fMQlTEz1KxGddw==
+  dependencies:
+    react-fast-compare "^3.0.1"
+    warning "^4.0.2"
 
 react-refresh@0.8.3:
   version "0.8.3"
@@ -7529,6 +7548,13 @@ walker@^1.0.7, walker@~1.0.5:
   integrity sha1-L3+bj9ENZ3JisYqITijRlhjgKPs=
   dependencies:
     makeerror "1.0.x"
+
+warning@^4.0.2:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/warning/-/warning-4.0.3.tgz#16e9e077eb8a86d6af7d64aa1e05fd85b4678ca3"
+  integrity sha512-rpJyN222KWIvHJ/F53XSZv0Zl/accqHR8et1kpaMTD/fLCRxtV8iX8czMzY7sVZupTI3zcUTg8eycS2kNF9l6w==
+  dependencies:
+    loose-envify "^1.0.0"
 
 watchpack@2.1.1:
   version "2.1.1"
