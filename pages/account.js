@@ -46,7 +46,7 @@ export default function AccountPage () {
     <AppPage>
       <div className={clsx(container, 'my-16')}>
 
-        {ctx.account && (
+        {ctx.account.id && (
           <AccountForm
             onSubmit={updateAccount}
             defaultValues={ctx.account}
