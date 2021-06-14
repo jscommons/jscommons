@@ -489,15 +489,14 @@
     "@generates/modulizer" "^7.0.2"
     koa-compose "^4.1.0"
 
-"@generates/swag-squad@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@generates/swag-squad/-/swag-squad-0.0.5.tgz#d2ebb6da24c3ef3bff9746b9857335b26b6835aa"
-  integrity sha512-hlyi7rVfKdDOt7+oKjUOzlrv4pqDfumU4Ecj4gbBPM/U9CeVy9UhnE/dxfHTEc99ZQ/shgzCd/uFnFXLVQK6nQ==
+"@generates/swag-squad@^0.0.9":
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/@generates/swag-squad/-/swag-squad-0.0.9.tgz#6110a04edfbec0206059b60e5cc0e72fa08eed08"
+  integrity sha512-B9Qyp2P/uXDB5/P3/6KZMvVlV6SD6piJt5J/NnEJQSW1pIz7rClPl4hjyCMFihGRsThM/vDrhRepl/Qfb/ztNg==
   dependencies:
     "@generates/merger" "^0.1.3"
     "@generates/swag" "^0.0.7"
     "@popperjs/core" "^2.9.2"
-    boring-avatars "^1.5.6"
     react-popper "^2.2.5"
 
 "@generates/swag@^0.0.7":
@@ -1494,11 +1493,6 @@ boolbase@^1.0.0, boolbase@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
   integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
-
-boring-avatars@^1.5.6:
-  version "1.5.6"
-  resolved "https://registry.yarnpkg.com/boring-avatars/-/boring-avatars-1.5.6.tgz#a0e9e7bc9d4412b81a6b50fba25cae50fc1eeadc"
-  integrity sha512-9rR8OixvyAGEvWvcQq62hcn0EomIGMM7XRs8SzPLkpT08wujVoygueKHkmQxIfZXfcW+pD2djfDqj66i3n69cA==
 
 brace-expansion@^1.1.7:
   version "1.1.11"
