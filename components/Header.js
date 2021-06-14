@@ -58,7 +58,7 @@ export default function Header () {
                   background: '#FDDC35'
                 }
               }}>
-                <StyledDiv css={{ display: 'grid', fontSize: '.825em' }}>
+                <StyledDiv css={{ display: 'grid' }}>
 
                   <StyledUserMenuItem onClick={() => router.push('/account')}>
 

@@ -489,10 +489,10 @@
     "@generates/modulizer" "^7.0.2"
     koa-compose "^4.1.0"
 
-"@generates/swag-squad@^0.0.9":
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/@generates/swag-squad/-/swag-squad-0.0.9.tgz#6110a04edfbec0206059b60e5cc0e72fa08eed08"
-  integrity sha512-B9Qyp2P/uXDB5/P3/6KZMvVlV6SD6piJt5J/NnEJQSW1pIz7rClPl4hjyCMFihGRsThM/vDrhRepl/Qfb/ztNg==
+"@generates/swag-squad@^0.0.10":
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/@generates/swag-squad/-/swag-squad-0.0.10.tgz#bcd954eec6cd7e186614d0fa59daebc6f376b806"
+  integrity sha512-i2jcitAkFXMVW0GGv+2vXjvAvE7rX2Qt08iM/NIA9Rz5MNoePJvbBkvcUy95STklXu4OKU18EusKIDZdTEWrNA==
   dependencies:
     "@generates/merger" "^0.1.3"
     "@generates/swag" "^0.0.7"

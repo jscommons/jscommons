@@ -46,26 +46,29 @@ export default function AccountPage () {
     <AppPage>
       <div className={clsx(container, 'my-16')}>
 
-        <AccountForm
-          onSubmit={updateAccount}
-          showUsername={true}
-          header={(
-            <div className="text-center mb-4">
+        {ctx.account && (
+          <AccountForm
+            onSubmit={updateAccount}
+            defaultValues={ctx.account}
+            showUsername={true}
+            header={(
+              <div className="text-center mb-4">
 
-              <h1 className="text-2xl font-bold mt-0">
-                Account Settings
-              </h1>
+                <h1 className="text-2xl font-bold mt-0">
+                  Account Settings
+                </h1>
 
-              <div className="text-sm text-gray-600 mt-2">
-                Update your account settings and confirm your password if
-                changing your username or email.
+                <div className="text-sm text-gray-600 mt-2">
+                  Update your account settings and confirm your password if
+                  changing your username or email.
+                </div>
+
               </div>
+            )}
+          />
+        )}
 
-            </div>
-          )}
-        />
-
-        <StyledDiv css={{ marginTop: '4em' }} />
+        <StyledDiv css={{ marginTop: '3em' }} />
 
         <ChangePasswordForm
           onSubmit={changePassword}
