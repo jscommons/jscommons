@@ -23,6 +23,8 @@ app.post('/api/sign-in', ...nrg.login)
 
 app.delete('/api/sign-out', ...nrg.logout)
 
+app.post('/api/forgot-password', ...nrg.forgotPassword)
+
 app.get('/api/posts', queryPosts)
 
 app.get('/api/posts/:id', getPost)
