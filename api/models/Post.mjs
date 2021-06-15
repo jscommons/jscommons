@@ -1,4 +1,5 @@
-import { Base, Account } from '@ianwalter/nrg'
+import { Base } from '@ianwalter/nrg'
+import Account from './Account.mjs'
 import Vote from './Vote.mjs'
 
 export default class Post extends Base {

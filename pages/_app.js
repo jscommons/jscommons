@@ -9,6 +9,7 @@ import * as dotter from '@generates/dotter'
 import { merge } from '@generates/merger'
 import nprogress from 'nprogress'
 import { defaultContext, AppContext } from '../lib/context.js'
+import logger from '../lib/clientLogger.js'
 
 const globalStyles = global({
   body: { backgroundColor: '#171717', color: '#D4D4D4' }
@@ -50,8 +51,8 @@ export default function App ({ Component, pageProps }) {
 
       if (ctx.csrfToken === undefined) {
         http.get('/api/session').then(res => {
-          console.info('Session data', res.body)
           ctx.update(res.body)
+          logger.debug('Session data', res.body)
         })
       }
     },

@@ -27,6 +27,7 @@ export default async function queryPosts (ctx) {
     query
       .withGraphJoined('votes')
       .modifyGraph(b => b.where('votes.accountId', ctx.session.account.id))
+      .omit(['password', 'enabled', 'emailVerified'])
   }
 
   ctx.body = await query.orderBy(orderBy, 'DESC').limit(30)

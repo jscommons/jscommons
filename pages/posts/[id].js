@@ -10,6 +10,7 @@ import ReplyForm from '../../components/ReplyForm.js'
 import PostAuthor from '../../components/PostAuthor.js'
 import footerLink from '../../styles/footerLink.js'
 import AppLink from '../../components/AppLink.js'
+import logger from '../lib/clientLogger.js'
 
 export default function PostPage () {
   const router = useRouter()
@@ -21,12 +22,10 @@ export default function PostPage () {
         http
           .get(`/api/posts/${router.query.id}`)
           .then(res => {
-            console.info('Post data', res.body)
+            logger.debug('Post data', res.body)
             setPost(res.body)
           })
-          .catch(err => {
-            console.error(err)
-          })
+          .catch(err => logger.error('Get post', { query: router.query }, err))
       }
     },
     [

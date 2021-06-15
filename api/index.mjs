@@ -17,6 +17,8 @@ const app = nrg.createApp({
   }
 })
 
+app.post('/api/log', ...nrg.clientLogging)
+
 app.get('/api/session', ...nrg.session)
 
 app.post('/api/sign-in', ...nrg.login)

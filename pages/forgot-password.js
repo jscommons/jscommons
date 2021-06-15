@@ -5,9 +5,13 @@ import { ForgotPasswordForm } from '@generates/swag-squad'
 import { Alert } from '@generates/swag'
 import AppPage from '../components/AppPage.js'
 import container from '../styles/container.js'
+import reduceError from '../lib/reduceError.js'
+import logger from '../lib/clientLogger.js'
 
 export default function ForgotPasswordPage () {
   const [successMessage, setSuccessMessage] = useState()
+  const [errorMessage, setErrorMessage] = useState()
+  const [feedback, setFeedback] = useState({})
 
   async function submitForgotPassword (body) {
     try {
@@ -15,7 +19,14 @@ export default function ForgotPasswordPage () {
       await http.post('/api/forgot-password', { body })
       setSuccessMessage('Sent!')
     } catch (err) {
-      console.error(err)
+      const reduced = reduceError(err)
+      if (reduced.level === 'warn') {
+        logger.warn('Sign in', reduced.err)
+      } else {
+        logger.error('Sign in', reduced.err)
+      }
+      setErrorMessage(reduced.message)
+      setFeedback(reduced.feedback)
     }
   }
 
@@ -24,6 +35,7 @@ export default function ForgotPasswordPage () {
       <div className={clsx(container, 'my-16')}>
         <ForgotPasswordForm
           onSubmit={submitForgotPassword}
+          feedback={feedback}
           header={(
             <div className="text-center mb-4">
 
@@ -39,6 +51,12 @@ export default function ForgotPasswordPage () {
               {successMessage && (
                 <Alert level="success" css={{ marginTop: '2em' }}>
                   {successMessage}
+                </Alert>
+              )}
+
+              {errorMessage && (
+                <Alert level="error" css={{ marginTop: '2em' }}>
+                  {errorMessage}
                 </Alert>
               )}
 
