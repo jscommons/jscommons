@@ -21,11 +21,15 @@ app.post('/api/log', ...nrg.clientLogging)
 
 app.get('/api/session', ...nrg.session)
 
+app.post('/api/sign-up', ...nrg.registration)
+
 app.post('/api/sign-in', ...nrg.login)
 
 app.delete('/api/sign-out', ...nrg.logout)
 
 app.post('/api/forgot-password', ...nrg.forgotPassword)
+
+app.put('/api/account', ...nrg.accountUpdate)
 
 app.get('/api/posts', queryPosts)
 

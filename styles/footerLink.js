@@ -1,3 +1,4 @@
 export default `
-  underline font-medium hover:text-gray-200 transition duration-200
+  cursor-pointer underline font-medium hover:text-gray-200 transition
+  duration-200
 `

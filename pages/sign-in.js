@@ -47,6 +47,9 @@ export default function SignInPage () {
         <SignInForm
           onSubmit={signIn}
           feedback={feedback}
+          forgotPasswordLinkProps={{
+            onClick: () => router.push('/forgot-password')
+          }}
           header={(
             <div className="text-center mb-4">
 

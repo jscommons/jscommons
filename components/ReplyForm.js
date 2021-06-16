@@ -1,55 +1,66 @@
-// import { useContext } from 'react'
-// import { useRouter } from 'next/router'
-import { Formik, Form } from 'formik'
-import clsx from 'clsx'
-// import { AppContext } from '../lib/context.js'
-import TextareaControl from '../components/controls/TextareaControl.js'
-import primaryButton from '../styles/buttons/primaryButton.js'
+import { useState } from 'react'
+import { useRouter } from 'next/router'
+import { useForm } from 'react-hook-form'
+import { TextField, LoadingButton, Alert } from '@generates/swag'
+import { StyledForm } from '@generates/swag-squad'
+import { http } from '@ianwalter/http'
+import TextareaField from '../components/fields/TextareaField.js'
+import logger from '../lib/clientLogger.js'
+import reduceError from '../lib/reduceError.js'
 
-export default function ReplyForm (props) {
-  // const ctx = useContext(AppContext)
-  // const router = useRouter()
+export default function ReplyForm () {
+  const router = useRouter()
+  const { register, handleSubmit } = useForm()
+  const [errorMessage, setErrorMessage] = useState()
+  const [feedback, setFeedback] = useState({})
 
-  async function submitPost (values, { setSubmitting }) {
-    setSubmitting(true)
+  async function submitReply (body) {
+    try {
+      setErrorMessage()
+      setFeedback({})
 
-    // const { data, error } = await supabase
-    //   .from('posts')
-    //   .insert({ ...values, profile_id: ctx.profile.id })
+      const res = await http.post('/api/posts', { body })
+      logger.debug('Reply response', res.body)
 
-    // if (error) {
-    //   console.error(error)
-    // } else {
-    //   console.info('Post data', data)
-    //   const [post] = data || []
-    //   // TODO:
-    //   router.push(`/posts/${post.id}`)
-    // }
+      router.push(`/posts/${res.body.id}`)
+    } catch (err) {
+      const reduced = reduceError(err)
+      if (reduced.level === 'warn') {
+        logger.warn('Submit reply', reduced.err)
+      } else {
+        logger.error('Submit reply', reduced.err)
+      }
+      setErrorMessage(reduced.message)
+      setFeedback(reduced.feedback)
+    }
   }
 
   return (
-    <Formik
-      initialValues={{ parent_id: props.parentId, body: '' }}
-      onSubmit={submitPost}
+    <StyledForm
+      onSubmit={handleSubmit(submitReply)}
+      css={{ width: '684px', marginLeft: '0' }}
     >
-      {() => (
-        <Form className="my-8 grid gap-6">
 
-          <TextareaControl
-            id="body"
-            required={true}
-            label="Reply"
-          />
-
-          <button
-            type="submit"
-            className={clsx(primaryButton, 'w-48 mt-2')}
-          >
-            Submit Reply
-          </button>
-
-        </Form>
+      {errorMessage && (
+        <Alert level="error">
+          {errorMessage}
+        </Alert>
       )}
-    </Formik>
+
+      <TextareaField
+        id="body"
+        label="Reply"
+        feedback={feedback.body}
+        register={register}
+        required
+      />
+
+      <div>
+        <LoadingButton type="submit" primary>
+          Submit Reply
+        </LoadingButton>
+      </div>
+
+    </StyledForm>
   )
 }

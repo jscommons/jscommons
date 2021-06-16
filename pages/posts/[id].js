@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 import clsx from 'clsx'
 import { http } from '@ianwalter/http'
+import { StyledDiv } from '@generates/swag'
 import AppPage from '../../components/AppPage.js'
 import container from '../../styles/container.js'
 import Reply from '../../components/Reply.js'
@@ -10,11 +11,12 @@ import ReplyForm from '../../components/ReplyForm.js'
 import PostAuthor from '../../components/PostAuthor.js'
 import footerLink from '../../styles/footerLink.js'
 import AppLink from '../../components/AppLink.js'
-import logger from '../lib/clientLogger.js'
+import logger from '../../lib/clientLogger.js'
 
 export default function PostPage () {
   const router = useRouter()
   const [post, setPost] = useState()
+  const [showReplyForm, setShowReplyForm] = useState(false)
 
   useEffect(
     () => {
@@ -56,6 +58,15 @@ export default function PostPage () {
 
               <PostAuthor post={post} />
 
+              <span className="mx-2">•</span>
+
+              <a
+                className={footerLink}
+                onClick={() => setShowReplyForm(!showReplyForm)}
+              >
+                {showReplyForm ? 'Cancel' : 'Reply'}
+              </a>
+
               {post.parent_id && (
                 <>
 
@@ -76,7 +87,11 @@ export default function PostPage () {
               {post.body}
             </p>
 
-            <ReplyForm parentId={post.id} />
+            {showReplyForm && (
+              <StyledDiv css={{ marginTop: '1em' }}>
+                <ReplyForm parentId={post.id} />
+              </StyledDiv>
+            )}
 
             <div className="mt-12">
               {post.replies.list?.map(reply => (

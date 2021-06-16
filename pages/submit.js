@@ -1,57 +1,97 @@
-import { useContext } from 'react'
+import { useState } from 'react'
 import { useRouter } from 'next/router'
-import { TextField } from '@generates/swag'
+import { useForm } from 'react-hook-form'
+import { TextField, LoadingButton, Alert } from '@generates/swag'
 import { StyledForm } from '@generates/swag-squad'
 import clsx from 'clsx'
 import { http } from '@ianwalter/http'
 import AppPage from '../components/AppPage.js'
-import { AppContext } from '../lib/context.js'
-import TextareaControl from '../components/controls/TextareaControl.js'
-import primaryButton from '../styles/buttons/primaryButton.js'
+import TextareaField from '../components/fields/TextareaField.js'
 import container from '../styles/container.js'
+import reduceError from '../lib/reduceError.js'
+import logger from '../lib/clientLogger.js'
 
 export default function SubmitPage () {
-  const ctx = useContext(AppContext)
   const router = useRouter()
+  const { register, handleSubmit } = useForm()
+  const [errorMessage, setErrorMessage] = useState()
+  const [feedback, setFeedback] = useState({})
 
-  async function submitPost (values, { setSubmitting }) {
-    setSubmitting(true)
+  async function submitPost (body) {
     try {
-      const body = { ...values, author: ctx.profile.id }
+      setErrorMessage()
+      setFeedback({})
+
       const res = await http.post('/api/posts', { body })
+      logger.debug('Post response', res.body)
+
       router.push(`/posts/${res.body.id}`)
     } catch (err) {
-      console.error(err)
-    } finally {
-      setSubmitting(false)
+      const reduced = reduceError(err)
+      if (reduced.level === 'warn') {
+        logger.warn('Submit post', reduced.err)
+      } else {
+        logger.error('Submit post', reduced.err)
+      }
+      setErrorMessage(reduced.message)
+      setFeedback(reduced.feedback)
     }
   }
 
   return (
     <AppPage>
       <div className={clsx(container, 'my-16')}>
-        <StyledForm css={{ width: '684px' }}>
+        <StyledForm
+          onSubmit={handleSubmit(submitPost)}
+          css={{ width: '684px' }}
+        >
 
-          <h1 className="text-xl text-gray-200 mb-4">
-            Submit a new post!
-          </h1>
+          <div className="text-center">
 
-          <TextField id="title" label="Title" />
+            <h1 className="text-2xl font-bold mt-0">
+              Submit Post
+            </h1>
+
+            <div className="text-sm text-gray-600 mt-2">
+              Submit a link and/or message to JS Commons below.
+            </div>
+
+          </div>
+
+          {errorMessage && (
+            <Alert level="error">
+              {errorMessage}
+            </Alert>
+          )}
+
+          <TextField
+            id="title"
+            label="Title"
+            feedback={feedback.title}
+            register={register}
+            required
+          />
 
           <TextField
             id="link"
             label="Link (optional)"
+            feedback={feedback.link}
             placeholder="https://github.com/jscommon/jscommon"
+            register={register}
           />
 
-          {/* <TextareaControl id="body" label="Body (optional)" /> */}
+          <TextareaField
+            id="body"
+            label="Body (optional)"
+            feedback={feedback.body}
+            register={register}
+          />
 
-          <button
-            type="submit"
-            className={clsx(primaryButton, 'w-48 mt-2')}
-          >
-            Submit Post
-          </button>
+          <div>
+            <LoadingButton type="submit" primary>
+              Submit Post
+            </LoadingButton>
+          </div>
 
         </StyledForm>
       </div>

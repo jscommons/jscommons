@@ -20,10 +20,14 @@ export default function AccountPage () {
 
   async function updateAccount (body) {
     try {
+      setAccountSuccess()
       setAccountError()
       setAccountFeedback({})
 
-      const res = await http.post('/api/sign-in', { body })
+      // FIXME: I should just change this in nrg.
+      body.password = body.passwordConfirm
+
+      const res = await http.put('/api/account', { body })
       logger.debug('Account update response', res.body)
       ctx.update(res.body)
       setAccountSuccess('Account updated!')
@@ -41,10 +45,14 @@ export default function AccountPage () {
 
   async function changePassword (body) {
     try {
+      setPasswordSuccess()
       setPasswordError()
       setPasswordFeedback({})
 
-      await http.post('/api/sign-in', { body })
+      // FIXME: I should just change this in nrg.
+      body.password = body.existingPassword
+
+      await http.put('/api/account', { body })
       setPasswordSuccess('Password updated!')
     } catch (err) {
       const reduced = reduceError(err)
@@ -81,13 +89,21 @@ export default function AccountPage () {
                 </div>
 
                 {accountSuccess && (
-                  <Alert level="success" css={{ marginTop: '2em' }}>
+                  <Alert
+                    level="success"
+                    shouldScrollTo={true}
+                    css={{ marginTop: '2em' }}
+                  >
                     {accountSuccess}
                   </Alert>
                 )}
 
                 {accountError && (
-                  <Alert level="error" css={{ marginTop: '2em' }}>
+                  <Alert
+                    level="error"
+                    shouldScrollTo={true}
+                    css={{ marginTop: '2em' }}
+                  >
                     {accountError}
                   </Alert>
                 )}
