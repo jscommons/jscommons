@@ -19,7 +19,7 @@
     "@emotion/styled": "^11.3.0",
     "@generates/dotter": "^2.0.1",
     "@generates/merger": "^0.1.3",
-    "@generates/swag": "^0.0.8",
+    "@generates/swag": "^0.0.9",
     "@generates/swag-squad": "^0.0.12",
     "@headlessui/react": "^1.2.0",
     "@ianwalter/http": "^6.0.0",
