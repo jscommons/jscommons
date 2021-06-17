@@ -519,14 +519,6 @@
     "@popperjs/core" "^2.9.2"
     react-popper "^2.2.5"
 
-"@generates/swag@^0.0.8":
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/@generates/swag/-/swag-0.0.8.tgz#c55b8a62a48fa28e613bb6b0ce84da1ddc57ef0a"
-  integrity sha512-lMAuWCaKa0CUO4KBvcC4xFpsr988yz+6d53K+7kEnG8Zr0Sb1CmcKkMyXV1VCWwW+LwxnOzQXB3gcOghb4B7XA==
-  dependencies:
-    "@generates/merger" "^0.1.3"
-    react-icons "^4.2.0"
-
 "@generates/swag@^0.0.9":
   version "0.0.9"
   resolved "https://registry.yarnpkg.com/@generates/swag/-/swag-0.0.9.tgz#38a090a77886281825990a31b3d2c572e110a2b5"
@@ -704,12 +696,12 @@
   dependencies:
     "@ianwalter/requester" "^2.5.0"
 
-"@ianwalter/nrg-validation@4.0.4":
-  version "4.0.4"
-  resolved "https://registry.yarnpkg.com/@ianwalter/nrg-validation/-/nrg-validation-4.0.4.tgz#cba4aa8fa959538b8f490a8984a3ddb5303e44bc"
-  integrity sha512-XuOlJgoZOIRu1Bfx9xeKRUbtme2pfc/VGGVgb05ZArXA7XeVFHP7k83Gd7vDlNDkw0CzT69/k9fVAYG8fEe9Dg==
+"@ianwalter/nrg-validation@4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@ianwalter/nrg-validation/-/nrg-validation-4.1.0.tgz#915cdacf7adf173bcd20e900394f9493a8c2b82d"
+  integrity sha512-Ye21w2LWK8WufraKH1XoJUnGUk+487HACvenhY7Vs1TFR9MDlTbQxXlIiurFcU/r6XFtElDuU2B1PU5cDsYOag==
   dependencies:
-    "@generates/dotter" "^2.0.0"
+    "@generates/dotter" "^2.0.1"
     "@generates/logger" "^1.0.0"
     "@generates/merger" "^0.1.3"
     date-fns "^2.22.1"
@@ -718,13 +710,13 @@
     libphonenumber-js "^1.9.14"
     zxcvbn "^4.4.2"
 
-"@ianwalter/nrg@^0.23.1":
-  version "0.23.1"
-  resolved "https://registry.yarnpkg.com/@ianwalter/nrg/-/nrg-0.23.1.tgz#cd785a10246c86a8f65ba300c5e230b277fa6bff"
-  integrity sha512-pcZrYBc7yEGyAliL4bOVVIHomsKojcFrFUdNGz721OjRGoWtZ8tDyhQvGQFq/uf+ecmS6w0o2RaStcgaaJDZsA==
+"@ianwalter/nrg@^0.23.2":
+  version "0.23.2"
+  resolved "https://registry.yarnpkg.com/@ianwalter/nrg/-/nrg-0.23.2.tgz#60c1141b7f98bd219af84bf22d69d9bce7db9e5d"
+  integrity sha512-bvhOj6hghfscmgyCoELNuXguWxuJCa5z4TnUyOdkJqbPp1t7XsV8lWLWT/iBnYxJRXT0QLV0klpz63bxpREOtA==
   dependencies:
     "@generates/cli" "^1.0.3"
-    "@generates/dotter" "^2.0.0"
+    "@generates/dotter" "^2.0.1"
     "@generates/extractor" "^1.3.0"
     "@generates/logger" "^1.0.0"
     "@generates/merger" "^0.1.3"
@@ -736,7 +728,7 @@
     "@ianwalter/nrg-router" "^1.1.2"
     "@ianwalter/nrg-session" "^8.0.0"
     "@ianwalter/nrg-test" "^1.2.3"
-    "@ianwalter/nrg-validation" "4.0.4"
+    "@ianwalter/nrg-validation" "4.1.0"
     "@ianwalter/requester" "^2.5.0"
     "@ianwalter/url" "^2.0.0"
     bcrypt "5.0.0"
