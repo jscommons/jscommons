@@ -89,7 +89,7 @@ export default function PostPage () {
 
             {showReplyForm && (
               <StyledDiv css={{ marginTop: '1em' }}>
-                <ReplyForm parentId={post.id} />
+                <ReplyForm threadId={post.id} parentId={post.id} />
               </StyledDiv>
             )}
 

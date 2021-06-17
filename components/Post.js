@@ -9,7 +9,7 @@ export default function Post (props) {
   return (
     <>
 
-      <BallotBox post={props.post} />
+      <BallotBox post={props.post} onVote={props.onVote} />
 
       <div className="ml-4">
 

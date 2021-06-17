@@ -10,7 +10,6 @@ const footerLink = `
 `
 
 export default function Reply (props) {
-  const [reply] = useState(props.reply)
   const [showReplyForm, setShowReplyForm] = useState(false)
 
   return (
@@ -23,12 +22,12 @@ export default function Reply (props) {
         <div className="ml-4">
 
           <div className="text-lg">
-            {reply.body}
+            {props.reply.body}
           </div>
 
           <div className="text-gray-400">
 
-            <Link href={'/posts/' + reply.id}>
+            <Link href={'/posts/' + props.reply.id}>
               <a className={footerLink}>
                 Link
               </a>
@@ -49,11 +48,13 @@ export default function Reply (props) {
 
       </div>
 
-      {showReplyForm && <ReplyForm parentId={reply.id} />}
+      {showReplyForm && (
+        <ReplyForm threadId={props.reply.threadId} parentId={props.reply.id} />
+      )}
 
-      {reply.replies.list?.length && (
+      {props.reply.replies.list?.length && (
         <div className="my-8 pl-4 border-l-2 border-gray-700">
-          <ReplyList replies={reply.replies.list} />
+          <ReplyList replies={props.reply.replies.list} />
         </div>
       )}
 

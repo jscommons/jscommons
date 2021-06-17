@@ -1,4 +1,9 @@
-import { SchemaValidator, isString, isUrl } from '@ianwalter/nrg-validation'
+import {
+  SchemaValidator,
+  isString,
+  isUrl,
+  toUrl
+} from '@ianwalter/nrg-validation'
 
 const canBeEmptyIfReply = {
   validate (input, state, ctx) {
@@ -13,11 +18,11 @@ const canBeEmptyIfPost = {
   }
 }
 const postValidator = new SchemaValidator({
-  title: { isString, canBeEmptyIfReply },
-  link: { isString, isUrl, canBeEmptyIfReply },
-  body: { isString, canBeEmptyIfPost },
-  threadId: { isString, canBeEmptyIfPost },
-  parentId: { isString, canBeEmptyIfPost }
+  title: { isString, canBeEmpty: canBeEmptyIfReply },
+  link: { toUrl, isString, isUrl, canBeEmpty: canBeEmptyIfReply },
+  body: { isString, canBeEmpty: canBeEmptyIfPost },
+  threadId: { isString, canBeEmpty: canBeEmptyIfPost },
+  parentId: { isString, canBeEmpty: canBeEmptyIfPost }
 })
 
 export default async function validatePost (ctx, next) {

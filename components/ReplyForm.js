@@ -8,7 +8,7 @@ import TextareaField from '../components/fields/TextareaField.js'
 import logger from '../lib/clientLogger.js'
 import reduceError from '../lib/reduceError.js'
 
-export default function ReplyForm () {
+export default function ReplyForm (props) {
   const router = useRouter()
   const { register, handleSubmit } = useForm()
   const [errorMessage, setErrorMessage] = useState()
@@ -18,6 +18,9 @@ export default function ReplyForm () {
     try {
       setErrorMessage()
       setFeedback({})
+
+      body.threadId = props.threadId
+      body.parentId = props.parentId
 
       const res = await http.post('/api/posts', { body })
       logger.debug('Reply response', res.body)

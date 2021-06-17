@@ -20,7 +20,7 @@ export default function PostList (props) {
       }
       return p
     }
-    props.setPosts(props.posts.map(withUpdatedVote).sort(byScore))
+    setPosts(posts.map(withUpdatedVote).sort(byScore))
   }
 
   return (

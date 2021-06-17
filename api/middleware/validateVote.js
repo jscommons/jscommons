@@ -2,13 +2,12 @@ import { SchemaValidator, isString, isNumber } from '@ianwalter/nrg-validation'
 
 const isVoteValue = {
   validate (input) {
-    return { isValid: input >= -1 && input <= 1 }
+    return { isValid: input >= 0 && input <= 1 }
   }
 }
 const voteValidator = new SchemaValidator({
   value: { isNumber, isVoteValue },
-  postId: { isString },
-  accountId: { isString }
+  postId: { isString }
 })
 
 export default async function validateVote (ctx, next) {
