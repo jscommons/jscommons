@@ -509,13 +509,13 @@
     "@generates/modulizer" "^7.0.2"
     koa-compose "^4.1.0"
 
-"@generates/swag-squad@^0.0.11":
-  version "0.0.11"
-  resolved "https://registry.yarnpkg.com/@generates/swag-squad/-/swag-squad-0.0.11.tgz#a08d46ea22d0fdd02952d89f0b81c3cfdce85aca"
-  integrity sha512-N1bFec0651dvDMSt5FLN+q/6yiS+9oYBcJhI/skREF3+4SEFqhbgWWWud0R0uU6jmE4q8Ns8Uf/mYzmkiRnQPA==
+"@generates/swag-squad@^0.0.12":
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/@generates/swag-squad/-/swag-squad-0.0.12.tgz#cc51dedbd8918dd5c76b57a4096e3a9beb6f1d12"
+  integrity sha512-0tMWX/rHlxe7/aigrEqnoL0XdjXuW8wnYyouMGvSu4K9/wo2ZFgTDfSeOjzCfCN0puKZe8I3QCHIpHS/t1Ve8A==
   dependencies:
     "@generates/merger" "^0.1.3"
-    "@generates/swag" "^0.0.8"
+    "@generates/swag" "^0.0.9"
     "@popperjs/core" "^2.9.2"
     react-popper "^2.2.5"
 
@@ -523,6 +523,14 @@
   version "0.0.8"
   resolved "https://registry.yarnpkg.com/@generates/swag/-/swag-0.0.8.tgz#c55b8a62a48fa28e613bb6b0ce84da1ddc57ef0a"
   integrity sha512-lMAuWCaKa0CUO4KBvcC4xFpsr988yz+6d53K+7kEnG8Zr0Sb1CmcKkMyXV1VCWwW+LwxnOzQXB3gcOghb4B7XA==
+  dependencies:
+    "@generates/merger" "^0.1.3"
+    react-icons "^4.2.0"
+
+"@generates/swag@^0.0.9":
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/@generates/swag/-/swag-0.0.9.tgz#38a090a77886281825990a31b3d2c572e110a2b5"
+  integrity sha512-5WuWljjg0rmx8a15JABYdW/MfLYzOtSeEOGxPOQEpbgu9W8BQhGqSJVqXts/W4omRxOiYtgALgu2o1iBpJgR/Q==
   dependencies:
     "@generates/merger" "^0.1.3"
     react-icons "^4.2.0"
