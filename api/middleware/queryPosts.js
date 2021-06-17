@@ -30,5 +30,8 @@ export default async function queryPosts (ctx) {
       .omit(['password', 'enabled', 'emailVerified'])
   }
 
-  ctx.body = await query.orderBy(orderBy, 'DESC').limit(30)
+  ctx.body = await query
+    .whereNull('threadId')
+    .orderBy(orderBy, 'DESC')
+    .limit(30)
 }
