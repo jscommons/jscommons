@@ -1,6 +1,6 @@
 exports.up = knex => knex.schema.createTable('posts', t => {
   t.string('id').primary()
-  t.string('title').notNullable()
+  t.string('title')
   t.string('link')
   t.text('body')
   t.boolean('enabled').notNullable().defaultTo(true)

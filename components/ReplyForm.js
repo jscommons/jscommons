@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
-import { TextField, LoadingButton, Alert } from '@generates/swag'
+import { LoadingButton, Alert } from '@generates/swag'
 import { StyledForm } from '@generates/swag-squad'
 import { http } from '@ianwalter/http'
 import TextareaField from '../components/fields/TextareaField.js'
@@ -34,7 +34,7 @@ export default function ReplyForm (props) {
         logger.error('Submit reply', reduced.err)
       }
       setErrorMessage(reduced.message)
-      setFeedback(reduced.feedback)
+      if (reduced.feedback) setFeedback(reduced.feedback)
     }
   }
 

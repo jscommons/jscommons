@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import clsx from 'clsx'
@@ -12,8 +12,10 @@ import PostAuthor from '../../components/PostAuthor.js'
 import footerLink from '../../styles/footerLink.js'
 import AppLink from '../../components/AppLink.js'
 import logger from '../../lib/clientLogger.js'
+import { AppContext } from '../../lib/context.js'
 
 export default function PostPage () {
+  const ctx = useContext(AppContext)
   const router = useRouter()
   const [post, setPost] = useState()
   const [showReplyForm, setShowReplyForm] = useState(false)
@@ -62,7 +64,13 @@ export default function PostPage () {
 
               <a
                 className={footerLink}
-                onClick={() => setShowReplyForm(!showReplyForm)}
+                onClick={() => {
+                  if (ctx.account.id) {
+                    setShowReplyForm(!showReplyForm)
+                  } else {
+                    router.push('/sign-in')
+                  }
+                }}
               >
                 {showReplyForm ? 'Cancel' : 'Reply'}
               </a>
