@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import { LoadingButton, Alert } from '@generates/swag'
 import { StyledForm } from '@generates/swag-squad'
@@ -9,7 +8,6 @@ import logger from '../lib/clientLogger.js'
 import reduceError from '../lib/reduceError.js'
 
 export default function ReplyForm (props) {
-  const router = useRouter()
   const { register, handleSubmit } = useForm()
   const [errorMessage, setErrorMessage] = useState()
   const [feedback, setFeedback] = useState({})
@@ -25,7 +23,7 @@ export default function ReplyForm (props) {
       const res = await http.post('/api/posts', { body })
       logger.debug('Reply response', res.body)
 
-      router.push(`/posts/${res.body.id}`)
+      props.onSuccess(res.body)
     } catch (err) {
       const reduced = reduceError(err)
       if (reduced.level === 'warn') {
@@ -41,7 +39,7 @@ export default function ReplyForm (props) {
   return (
     <StyledForm
       onSubmit={handleSubmit(submitReply)}
-      css={{ width: '684px', marginLeft: '0' }}
+      css={{ width: '684px', marginLeft: '0', padding: '1.5em' }}
     >
 
       {errorMessage && (

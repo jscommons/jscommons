@@ -62,7 +62,7 @@ export default function Reply (props) {
         <ReplyForm threadId={props.reply.threadId} parentId={props.reply.id} />
       )}
 
-      {props.reply.replies.list?.length && (
+      {props.reply.replies?.length && (
         <div className="my-8 pl-4 border-l-2 border-gray-700">
           <ReplyList replies={props.reply.replies.list} />
         </div>

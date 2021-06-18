@@ -13,12 +13,19 @@ import footerLink from '../../styles/footerLink.js'
 import AppLink from '../../components/AppLink.js'
 import logger from '../../lib/clientLogger.js'
 import { AppContext } from '../../lib/context.js'
+import BallotBox from '../../components/BallotBox.js'
 
 export default function PostPage () {
   const ctx = useContext(AppContext)
   const router = useRouter()
   const [post, setPost] = useState()
   const [showReplyForm, setShowReplyForm] = useState(false)
+
+  function onReply (reply) {
+    post.replies.push(reply)
+    setPost(post)
+    setShowReplyForm(false)
+  }
 
   useEffect(
     () => {
@@ -43,66 +50,79 @@ export default function PostPage () {
 
         {post && (
           <div>
+            <div className="flex">
 
-            <AppLink
-              href={post.link || ('/posts/' + post.id)}
-              className={clsx(
-                'text-xl font-medium dark:text-gray-300',
-                'dark:hover:text-gray-100'
-              )}
-            >
-              <h1 className="text-2xl font-medium">
-                {post.title}
-              </h1>
-            </AppLink>
+              <BallotBox post={post} css={{ marginTop: '1em' }} />
 
-            <div className="text-gray-400">
+              <div className="ml-4">
 
-              <PostAuthor post={post} />
+                <AppLink
+                  href={post.link || ('/posts/' + post.id)}
+                  className={clsx(
+                    'text-xl font-medium dark:text-gray-300',
+                    'dark:hover:text-gray-100'
+                  )}
+                >
+                  <h1 className="text-2xl font-medium">
+                    {post.title}
+                  </h1>
+                </AppLink>
 
-              <span className="mx-2">•</span>
+                <p className="text-xl dark:text-gray-400 mt-1">
+                  {post.body}
+                </p>
 
-              <a
-                className={footerLink}
-                onClick={() => {
-                  if (ctx.account.id) {
-                    setShowReplyForm(!showReplyForm)
-                  } else {
-                    router.push('/sign-in')
-                  }
-                }}
-              >
-                {showReplyForm ? 'Cancel' : 'Reply'}
-              </a>
+                <div className="dark:text-gray-500 mt-1">
 
-              {post.parent_id && (
-                <>
+                  <PostAuthor post={post} />
 
                   <span className="mx-2">•</span>
 
-                  <Link href={'/posts/' + post.parent_id}>
-                    <a className={footerLink}>
-                      Parent
-                    </a>
-                  </Link>
+                  <a
+                    className={footerLink}
+                    onClick={() => {
+                      if (ctx.account.id) {
+                        setShowReplyForm(!showReplyForm)
+                      } else {
+                        router.push('/sign-in')
+                      }
+                    }}
+                  >
+                    {showReplyForm ? 'Cancel' : 'Reply'}
+                  </a>
 
-                </>
-              )}
+                  {post.parentId && (
+                    <>
+
+                      <span className="mx-2">•</span>
+
+                      <Link href={'/posts/' + post.parentId}>
+                        <a className={footerLink}>
+                          Parent
+                        </a>
+                      </Link>
+
+                    </>
+                  )}
+
+                </div>
+
+                {showReplyForm && (
+                  <StyledDiv css={{ marginTop: '1em' }}>
+                    <ReplyForm
+                      threadId={post.id}
+                      parentId={post.id}
+                      onSuccess={onReply}
+                    />
+                  </StyledDiv>
+                )}
+
+              </div>
 
             </div>
 
-            <p className="text-xl mt-2">
-              {post.body}
-            </p>
-
-            {showReplyForm && (
-              <StyledDiv css={{ marginTop: '1em' }}>
-                <ReplyForm threadId={post.id} parentId={post.id} />
-              </StyledDiv>
-            )}
-
-            <div className="mt-12">
-              {post.replies.list?.map(reply => (
+            <div className="mt-8">
+              {post.replies.map(reply => (
                 <Reply key={reply.id} reply={reply} />
               ))}
             </div>

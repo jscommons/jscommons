@@ -1,4 +1,5 @@
 import { useContext } from 'react'
+import { StyledDiv } from '@generates/swag'
 import { HiArrowCircleUp } from 'react-icons/hi'
 import { http } from '@ianwalter/http'
 import clsx from 'clsx'
@@ -20,21 +21,6 @@ export default function BallotBox (props) {
   async function submitVote () {
     const value = vote?.value === 1 ? 0 : 1
     if (ctx.account.id) {
-      // const { data, error } = await supabase
-      //   .from('votes')
-      //   .upsert({
-      //     ...vote,
-      //     post_id: post.id,
-      //     profile_id: ctx.profile.id,
-      //     value
-      //   })
-
-      // if (error) {
-      //   console.error(error)
-      // } else {
-      //   console.info('Vote data', data)
-      //   if (props.onVote) props.onVote(post, data)
-      // }
       try {
         const body = { postId: props.post.id, value }
         const res = await http.post('/api/vote', { body })
@@ -47,7 +33,7 @@ export default function BallotBox (props) {
   }
 
   return (
-    <div>
+    <StyledDiv css={props.css}>
       <HiArrowCircleUp
         onClick={submitVote}
         className={clsx(
@@ -56,6 +42,6 @@ export default function BallotBox (props) {
           voteColor
         )}
       />
-    </div>
+    </StyledDiv>
   )
 }
