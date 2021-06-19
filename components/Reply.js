@@ -58,9 +58,11 @@ export default function Reply (props) {
         </div>
       )}
 
-      {reply.replies?.length > 0 && (
-        <div className="my-8 pl-4 border-l-2 border-gray-700">
-          <ReplyList replies={reply.replies.list} />
+      {reply.replies && (
+        <div
+          className="my-3 pl-6 border-l-2 border-gray-800 hover:border-gray-700"
+        >
+          <ReplyList replies={reply.replies} />
         </div>
       )}
 

@@ -31,7 +31,30 @@ export default function PostPage () {
           .get(`/api/posts/${router.query.id}`)
           .then(res => {
             logger.debug('Post data', res.body)
-            setPost(res.body)
+
+            const replies = {}
+            const post = {
+              ...res.body,
+              replies: res.body.replies.reduce(
+                (acc, reply) => {
+                  reply.replies = []
+                  replies[reply.id] = reply
+
+                  if (reply.parentId === res.body.id) {
+                    acc.push(reply)
+                  } else if (replies[reply.parentId]) {
+                    replies[reply.parentId].replies.push(reply)
+                  }
+
+                  return acc
+                },
+                []
+              )
+            }
+
+            logger.debug('Post with replies', { post, replies })
+
+            setPost(post)
           })
           .catch(err => logger.error('Get post', { query: router.query }, err))
       }
