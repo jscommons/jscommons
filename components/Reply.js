@@ -12,8 +12,8 @@ export default function Reply (props) {
   const [reply, setReply] = useState(props.reply)
   const [showReplyForm, setShowReplyForm] = useState(false)
 
-  function onReply (reply) {
-    reply.replies.push(reply)
+  function onReply (newReply) {
+    reply.replies.push(newReply)
     setReply(reply)
     setShowReplyForm(false)
   }
@@ -60,7 +60,7 @@ export default function Reply (props) {
 
       {reply.replies && (
         <div
-          className="my-3 pl-6 border-l-2 border-gray-800 hover:border-gray-700"
+          className="pl-4 ml-2 border-l-2 border-gray-800 hover:border-gray-700"
         >
           <ReplyList replies={reply.replies} />
         </div>
