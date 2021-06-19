@@ -1,4 +1,5 @@
 import Post from '../models/Post.mjs'
+import Vote from '../models/Vote.mjs'
 
 export default async function addPost (ctx) {
   const post = await Post.query().insert({
@@ -13,6 +14,14 @@ export default async function addPost (ctx) {
   const updated = await post.$query()
     .withGraphJoined('[author, replies]')
     .omit(['password', 'enabled', 'emailVerified'])
+
+  updated.votes = [
+    await Vote.query().insert({
+      value: 1,
+      postId: updated.id,
+      accountId: ctx.session.account.id
+    })
+  ]
 
   if (ctx.req.body.threadId) {
     Post.query()
