@@ -4,6 +4,7 @@ exports.up = knex => knex.schema.createTable('posts', t => {
   t.string('link')
   t.text('body')
   t.boolean('enabled').notNullable().defaultTo(true)
+  t.boolean('deleted').notNullable().defaultTo(false)
   t.integer('replyCount').defaultsTo(0)
   t.string('accountId').notNullable()
   t.string('threadId')

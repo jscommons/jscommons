@@ -10,7 +10,23 @@ export default async function addPost (ctx) {
     parentId: ctx.req.body.parentId
   })
 
-  ctx.body = await post.$query()
+  const updated = await post.$query()
     .withGraphJoined('[author, replies]')
     .omit(['password', 'enabled', 'emailVerified'])
+
+  if (ctx.req.body.threadId) {
+    Post.query()
+      .count('id', { as: 'replyCount' })
+      .findOne('threadId', ctx.req.body.threadId)
+      .then(res => {
+        ctx.logger.debug('Reply count', res)
+        Post.query()
+          .patch({ replyCount: res.replyCount })
+          .findById(ctx.req.body.threadId)
+          .execute()
+      })
+      .catch(err => ctx.logger.error('Updating replyCount failed', err))
+  }
+
+  ctx.body = updated
 }
