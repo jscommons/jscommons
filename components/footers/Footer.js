@@ -1,6 +1,6 @@
 import clsx from 'clsx'
-import AppLink from '../components/AppLink.js'
-import container from '../styles/container.js'
+import AppLink from '../../components/AppLink.js'
+import container from '../../styles/container.js'
 
 const links = [
   { name: 'About', href: '/about' },

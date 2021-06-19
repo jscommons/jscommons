@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import footerLink from '../styles/footerLink.js'
+import postFooterLink from '../styles/postFooterLink.js'
 
 export default function PostAuthor (props) {
   return (
@@ -8,7 +8,7 @@ export default function PostAuthor (props) {
       Posted by {' '}
 
       <Link href={'/profiles/' + props.post.author.username}>
-        <a className={footerLink}>
+        <a className={postFooterLink}>
           {props.post.author.username}
         </a>
       </Link>

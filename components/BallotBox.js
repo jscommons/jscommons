@@ -37,7 +37,7 @@ export default function BallotBox (props) {
       <HiArrowCircleUp
         onClick={submitVote}
         className={clsx(
-          'w-8 h-8 transition duration-200',
+          'transition duration-200',
           ctx.account.id && 'cursor-pointer',
           voteColor
         )}

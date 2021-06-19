@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import Post from './Post.js'
+import PostItem from '../PostItem.js'
 
 function byScore (a, b) {
   return b.score - a.score
@@ -27,7 +27,7 @@ export default function PostList (props) {
     <ul>
       {posts?.map(post => (
         <li key={post.id} className="my-5 flex items-center">
-          <Post post={post} onVote={updatePosts} />
+          <PostItem post={post} onVote={updatePosts} />
         </li>
       ))}
     </ul>

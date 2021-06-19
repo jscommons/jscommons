@@ -1,15 +1,12 @@
 import { useEffect, useState, useContext } from 'react'
 import { useRouter } from 'next/router'
-import Link from 'next/link'
 import clsx from 'clsx'
 import { http } from '@ianwalter/http'
-import { StyledDiv } from '@generates/swag'
 import AppPage from '../../components/AppPage.js'
 import container from '../../styles/container.js'
 import Reply from '../../components/Reply.js'
 import ReplyForm from '../../components/ReplyForm.js'
-import PostAuthor from '../../components/PostAuthor.js'
-import footerLink from '../../styles/footerLink.js'
+import PostFooter from '../../components/footers/PostFooter.js'
 import AppLink from '../../components/AppLink.js'
 import logger from '../../lib/clientLogger.js'
 import { AppContext } from '../../lib/context.js'
@@ -50,11 +47,15 @@ export default function PostPage () {
 
         {post && (
           <div>
+
             <div className="flex">
 
-              <BallotBox post={post} css={{ marginTop: '1em' }} />
+              <BallotBox
+                post={post}
+                css={{ fontSize: '2em', marginTop: '.1em' }}
+              />
 
-              <div className="ml-4">
+              <div className="ml-3">
 
                 <AppLink
                   href={post.link || ('/posts/' + post.id)}
@@ -68,60 +69,37 @@ export default function PostPage () {
                   </h1>
                 </AppLink>
 
-                <p className="text-xl dark:text-gray-400 mt-1">
+                <p className="text-xl dark:text-gray-400 my-1">
                   {post.body}
                 </p>
 
-                <div className="dark:text-gray-500 mt-1">
-
-                  <PostAuthor post={post} />
-
-                  <span className="mx-2">•</span>
-
-                  <a
-                    className={footerLink}
-                    onClick={() => {
-                      if (ctx.account.id) {
-                        setShowReplyForm(!showReplyForm)
-                      } else {
-                        router.push('/sign-in')
-                      }
-                    }}
-                  >
-                    {showReplyForm ? 'Cancel' : 'Reply'}
-                  </a>
-
-                  {post.parentId && (
-                    <>
-
-                      <span className="mx-2">•</span>
-
-                      <Link href={'/posts/' + post.parentId}>
-                        <a className={footerLink}>
-                          Parent
-                        </a>
-                      </Link>
-
-                    </>
-                  )}
-
-                </div>
+                <PostFooter
+                  post={post}
+                  showReplyForm={showReplyForm}
+                  onShowReplyForm={() => {
+                    if (ctx.account.id) {
+                      setShowReplyForm(!showReplyForm)
+                    } else {
+                      router.push('/sign-in')
+                    }
+                  }}
+                />
 
                 {showReplyForm && (
-                  <StyledDiv css={{ marginTop: '1em' }}>
+                  <div className="mt-4">
                     <ReplyForm
                       threadId={post.id}
                       parentId={post.id}
                       onSuccess={onReply}
                     />
-                  </StyledDiv>
+                  </div>
                 )}
 
               </div>
 
             </div>
 
-            <div className="mt-8">
+            <div className="mt-8 ml-10">
               {post.replies.map(reply => (
                 <Reply key={reply.id} reply={reply} />
               ))}

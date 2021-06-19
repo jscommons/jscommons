@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Reply from './Reply.js'
+import Reply from '../Reply.js'
 
 export default function ReplyList (props) {
   const [replies] = useState(props.replies)

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import clsx from 'clsx'
 import { http } from '@ianwalter/http'
 import AppPage from '../components/AppPage.js'
-import PostList from '../components/PostList.js'
+import PostList from '../components/lists/PostList.js'
 import container from '../styles/container.js'
 import logger from '../lib/clientLogger.js'
 

@@ -1,12 +1,12 @@
 import { useContext } from 'react'
 import { css } from '@stitches/react'
 import Link from 'next/link'
+import Image from 'next/image'
 import clsx from 'clsx'
-import { StyledDiv } from '@generates/swag'
+import { StyledDiv, StyledLink } from '@generates/swag'
 import { UserMenu, StyledUserMenuItem } from '@generates/swag-squad'
 import { HiOutlineAdjustments, HiOutlineLogout } from 'react-icons/hi'
 import { AppContext } from '../lib/context.js'
-import BrandHeading from '../components/BrandHeading.js'
 import container from '../styles/container.js'
 import AppLink from '../components/AppLink.js'
 import { useRouter } from 'next/router'
@@ -25,7 +25,16 @@ export default function Header () {
   return (
     <div className={clsx(container, 'flex items-center mt-6')}>
 
-      <BrandHeading />
+      <Link href="/">
+        <StyledLink css={{ height: '35px' }}>
+          <Image
+            src="/img/jscommons-logo-yellow.svg"
+            height="35"
+            width="150"
+            alt="JS Commons"
+          />
+        </StyledLink>
+      </Link>
 
       <nav
         className="flex flex-wrap items-center ml-8"
