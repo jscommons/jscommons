@@ -1,7 +1,8 @@
 import Post from '../models/Post.mjs'
 
 export default async function getPost (ctx) {
-  const query = Post.query().withGraphJoined('[author, replies.author]')
+  const query = Post.query()
+    .withGraphJoined('[author, replies.[author, votes]]')
 
   if (ctx.session.account?.id) {
     query

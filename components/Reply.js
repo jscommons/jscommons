@@ -9,7 +9,14 @@ import ReplyFooter from './footers/ReplyFooter.js'
 export default function Reply (props) {
   const ctx = useContext(AppContext)
   const router = useRouter()
+  const [reply, setReply] = useState(props.reply)
   const [showReplyForm, setShowReplyForm] = useState(false)
+
+  function onReply (reply) {
+    reply.replies.push(reply)
+    setReply(reply)
+    setShowReplyForm(false)
+  }
 
   return (
     <>
@@ -17,16 +24,16 @@ export default function Reply (props) {
       <div className="flex my-4">
 
         <BallotBox
-          post={props.reply}
+          post={reply}
           css={{ fontSize: '1.25em', marginTop: '.1em' }}
         />
 
         <div className="ml-2">
 
-          {props.reply.body}
+          {reply.body}
 
           <ReplyFooter
-            reply={props.reply}
+            reply={reply}
             showReplyForm={showReplyForm}
             onShowReplyForm={() => {
               if (ctx.account.id) {
@@ -44,15 +51,16 @@ export default function Reply (props) {
       {showReplyForm && (
         <div className="ml-7">
           <ReplyForm
-            threadId={props.reply.threadId}
-            parentId={props.reply.id}
+            threadId={reply.threadId}
+            parentId={reply.id}
+            onSuccess={onReply}
           />
         </div>
       )}
 
-      {props.reply.replies?.length && (
+      {reply.replies?.length > 0 && (
         <div className="my-8 pl-4 border-l-2 border-gray-700">
-          <ReplyList replies={props.reply.replies.list} />
+          <ReplyList replies={reply.replies.list} />
         </div>
       )}
 
