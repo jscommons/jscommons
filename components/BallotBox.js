@@ -10,7 +10,9 @@ export default function BallotBox (props) {
   const [vote] = props.post.votes || []
 
   let voteColor = 'text-gray-600'
-  if (vote?.value === 1) {
+  if (vote?.value === 1 && vote?.accountId === ctx.account.id) {
+    voteColor = 'text-blue-400 cursor-not-allowed'
+  } else if (vote?.value === 1) {
     voteColor = 'text-green-400 hover:text-green-300'
   } else if (vote?.value === -1) {
     voteColor = 'text-red-400 hover:text-red-300'
