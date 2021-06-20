@@ -5,7 +5,7 @@ exports.up = knex => knex.schema.createTable('posts', t => {
   t.text('body')
   t.boolean('enabled').notNullable().defaultTo(true)
   t.boolean('deleted').notNullable().defaultTo(false)
-  t.integer('replyCount').defaultsTo(0)
+  t.integer('replyCount').unsigned().defaultsTo(0)
   t.string('accountId').notNullable()
   t.string('threadId')
   t.string('parentId')
