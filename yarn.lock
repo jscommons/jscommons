@@ -590,10 +590,10 @@
     libphonenumber-js "^1.9.14"
     zxcvbn "^4.4.2"
 
-"@ianwalter/nrg@^0.23.2":
-  version "0.23.2"
-  resolved "https://registry.yarnpkg.com/@ianwalter/nrg/-/nrg-0.23.2.tgz#60c1141b7f98bd219af84bf22d69d9bce7db9e5d"
-  integrity sha512-bvhOj6hghfscmgyCoELNuXguWxuJCa5z4TnUyOdkJqbPp1t7XsV8lWLWT/iBnYxJRXT0QLV0klpz63bxpREOtA==
+"@ianwalter/nrg@^0.24.0":
+  version "0.24.0"
+  resolved "https://registry.yarnpkg.com/@ianwalter/nrg/-/nrg-0.24.0.tgz#2c5998a48eb504764c346fcb60cee0b131adaaff"
+  integrity sha512-iv44VNlEeMlnEn31OpKGREjdb7ka+vAh9zJ1kCIUZlMjbSL/iVUXriktOSATQYWln4vqC/Pp0coALbfxuWxWyg==
   dependencies:
     "@generates/cli" "^1.0.3"
     "@generates/dotter" "^2.0.1"
@@ -613,6 +613,7 @@
     "@ianwalter/url" "^2.0.0"
     bcrypt "5.0.0"
     cheerio "^1.0.0-rc.10"
+    common-tags "^1.8.0"
     date-fns "^2.22.1"
     devalue "^2.0.1"
     dotenv "^10.0.0"
