@@ -20,7 +20,7 @@
     "@generates/swag-squad": "^0.0.13",
     "@headlessui/react": "^1.2.0",
     "@ianwalter/http": "^6.0.0",
-    "@ianwalter/nrg": "^0.23.2",
+    "@ianwalter/nrg": "^0.24.0",
     "@stitches/react": "^0.2.2",
     "clsx": "^1.1.1",
     "common-tags": "^1.8.0",
