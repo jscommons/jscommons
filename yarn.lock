@@ -409,13 +409,12 @@
     "@generates/merger" "^0.1.3"
     react-icons "^4.2.0"
 
-"@generates/swag@^0.0.9":
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/@generates/swag/-/swag-0.0.9.tgz#38a090a77886281825990a31b3d2c572e110a2b5"
-  integrity sha512-5WuWljjg0rmx8a15JABYdW/MfLYzOtSeEOGxPOQEpbgu9W8BQhGqSJVqXts/W4omRxOiYtgALgu2o1iBpJgR/Q==
+"@generates/swag@^0.0.12":
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/@generates/swag/-/swag-0.0.12.tgz#e52e434c116d4a23ca93de1adca90a815bb16e35"
+  integrity sha512-qvw1QEGeKFYFUOc5Vy06F723o5DStobROt+SI09KJ4VyRSP+/QvctUCDaJLbk+Kt4wgutyOAtK8w89JKpjHZoA==
   dependencies:
     "@generates/merger" "^0.1.3"
-    react-icons "^4.2.0"
 
 "@hapi/accept@5.0.2":
   version "5.0.2"
