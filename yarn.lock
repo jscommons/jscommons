@@ -391,20 +391,13 @@
     "@generates/modulizer" "^7.0.2"
     koa-compose "^4.1.0"
 
-"@generates/swag-squad@^0.0.15":
-  version "0.0.15"
-  resolved "https://registry.yarnpkg.com/@generates/swag-squad/-/swag-squad-0.0.15.tgz#db48263248db3349de8b83e538c9c8c9fcaeb30c"
-  integrity sha512-P4bbOSsEvR2MgVo8nORqpD9KmOpPQjjKzGIhC6IpdooRlzFw+B0qi0/KtCsZDeOJuMxrnVJS8aFrZbZ2sp8zaw==
+"@generates/swag-squad@^0.0.16":
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/@generates/swag-squad/-/swag-squad-0.0.16.tgz#326bf84d532a7d1ede2f574ee00cfd4b01c376bf"
+  integrity sha512-Za1AkvuayXd0LmwTiPAXMVxQlKZjaYykJc6uYSnWB+aH+ER/gyPSsSN4em8BQd/B5Th7jz5p+uZfL99cN8a5jQ==
   dependencies:
     "@generates/merger" "^0.1.3"
-    "@generates/swag" "^0.0.12"
-
-"@generates/swag@^0.0.12":
-  version "0.0.12"
-  resolved "https://registry.yarnpkg.com/@generates/swag/-/swag-0.0.12.tgz#e52e434c116d4a23ca93de1adca90a815bb16e35"
-  integrity sha512-qvw1QEGeKFYFUOc5Vy06F723o5DStobROt+SI09KJ4VyRSP+/QvctUCDaJLbk+Kt4wgutyOAtK8w89JKpjHZoA==
-  dependencies:
-    "@generates/merger" "^0.1.3"
+    "@generates/swag" "^0.0.13"
 
 "@generates/swag@^0.0.13":
   version "0.0.13"
