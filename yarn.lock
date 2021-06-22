@@ -406,6 +406,13 @@
   dependencies:
     "@generates/merger" "^0.1.3"
 
+"@generates/swag@^0.0.13":
+  version "0.0.13"
+  resolved "https://registry.yarnpkg.com/@generates/swag/-/swag-0.0.13.tgz#9ffc1b58f13327c9cccd020a6691d7d17409e618"
+  integrity sha512-TTV95FoW7JGEnQoUQvYzA/iGC79wS9rrqhnNe/kpp6n5P+5vU8eNSQ0NuLIXsZqV73Cun/qBqXxU59KUQbwp/A==
+  dependencies:
+    "@generates/merger" "^0.1.3"
+
 "@hapi/accept@5.0.2":
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/@hapi/accept/-/accept-5.0.2.tgz#ab7043b037e68b722f93f376afb05e85c0699523"
