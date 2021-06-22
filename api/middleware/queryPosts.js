@@ -32,6 +32,7 @@ export default async function queryPosts (ctx) {
 
   ctx.body = await query
     .whereNull('threadId')
+    .where('deleted', false)
     .orderBy(orderBy, 'DESC')
     .limit(30)
 }

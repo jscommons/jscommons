@@ -1,27 +1,34 @@
 import { useContext } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { StyledDiv, transition } from '@generates/swag'
 import { AppContext } from '../../lib/context.js'
 import PostAuthor from '../../components/PostAuthor.js'
-import postFooterLink from '../../styles/postFooterLink.js'
+import DeleteLink from '../links/DeleteLink.js'
 
 export default function PostFooter (props) {
   const ctx = useContext(AppContext)
-
-  async function deletePost () {
-    console.log('TODO:')
-  }
+  const router = useRouter()
 
   return (
-    <div className="text-gray-500">
+    <StyledDiv css={{
+      color: '#737373',
+      a: {
+        cursor: 'pointer',
+        textDecoration: 'underline',
+        fontWeight: '500',
+        ...transition,
+        '&:hover': {
+          color: '#D4D4D4'
+        }
+      }
+    }}>
 
       {props.post.author && <PostAuthor post={props.post} />}
 
       <span className="mx-2">•</span>
 
-      <a
-        className={postFooterLink}
-        onClick={props.onShowReplyForm}
-      >
+      <a onClick={props.onShowReplyForm}>
         {props.showReplyForm ? 'Cancel' : 'Reply'}
       </a>
 
@@ -30,9 +37,10 @@ export default function PostFooter (props) {
 
           <span className="mx-2">•</span>
 
-          <a className={postFooterLink} onClick={deletePost}>
-            Delete
-          </a>
+          <DeleteLink
+            post={props.post}
+            onDeleted={() => router.push('/')}
+          />
 
         </>
       )}
@@ -43,7 +51,7 @@ export default function PostFooter (props) {
           <span className="mx-2">•</span>
 
           <Link href={'/posts/' + props.post.parentId}>
-            <a className={postFooterLink}>
+            <a>
               Parent
             </a>
           </Link>
@@ -51,6 +59,6 @@ export default function PostFooter (props) {
         </>
       )}
 
-    </div>
+    </StyledDiv>
   )
 }

@@ -1,38 +1,42 @@
 import { useContext } from 'react'
 import Link from 'next/link'
+import { StyledDiv, transition } from '@generates/swag'
 import PostAuthor from '../../components/PostAuthor.js'
-import postFooterLink from '../../styles/postFooterLink.js'
 import { AppContext } from '../../lib/context.js'
+import DeleteLink from '../links/DeleteLink.js'
 
 export default function ReplyFooter (props) {
   const ctx = useContext(AppContext)
 
-  async function deleteReply () {
-    console.log('TODO:')
-  }
-
   return (
-    <div className="text-sm text-gray-500">
+    <StyledDiv css={{
+      color: '#737373',
+      fontSize: '.875em',
+      a: {
+        cursor: 'pointer',
+        textDecoration: 'underline',
+        fontWeight: '500',
+        ...transition,
+        '&:hover': {
+          color: '#D4D4D4'
+        }
+      }
+    }}>
 
       {props.reply.author && <PostAuthor post={props.reply} />}
 
       <span className="mx-1">•</span>
 
-      <a
-        className={postFooterLink}
-        onClick={props.onShowReplyForm}
-      >
+      <a onClick={props.onShowReplyForm}>
         {props.showReplyForm ? 'Cancel' : 'Reply'}
       </a>
 
       {props.reply.author.id === ctx.account.id && (
         <>
 
-          <span className="mx-2">•</span>
+          <span className="mx-1">•</span>
 
-          <a className={postFooterLink} onClick={deleteReply}>
-            Delete
-          </a>
+          <DeleteLink post={props.reply} onDeleted={props.onDeleted} />
 
         </>
       )}
@@ -40,11 +44,11 @@ export default function ReplyFooter (props) {
       <span className="mx-1">•</span>
 
       <Link href={'/posts/' + props.reply.id}>
-        <a className={postFooterLink}>
+        <a>
           Link
         </a>
       </Link>
 
-    </div>
+    </StyledDiv>
   )
 }

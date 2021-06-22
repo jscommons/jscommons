@@ -3,12 +3,12 @@ import { css } from '@stitches/react'
 import Link from 'next/link'
 import Image from 'next/image'
 import clsx from 'clsx'
-import { StyledDiv, StyledLink } from '@generates/swag'
-import { UserMenu, StyledUserMenuItem } from '@generates/swag-squad'
+import { StyledDiv, StyledLink, StyledMenuItem } from '@generates/swag'
+import { UserMenu } from '@generates/swag-squad'
 import { HiOutlineAdjustments, HiOutlineLogout } from 'react-icons/hi'
 import { AppContext } from '../lib/context.js'
 import container from '../styles/container.js'
-import AppLink from '../components/AppLink.js'
+import AppLink from '../components/links/AppLink.js'
 import { useRouter } from 'next/router'
 
 const links = [
@@ -25,7 +25,7 @@ export default function Header () {
   return (
     <div className={clsx(container, 'flex items-center mt-6')}>
 
-      <Link href="/">
+      <Link href="/" passHref={true}>
         <StyledLink css={{ height: '35px' }}>
           <Image
             src="/img/jscommons-logo-yellow.svg"
@@ -69,21 +69,21 @@ export default function Header () {
               }}>
                 <StyledDiv css={{ display: 'grid' }}>
 
-                  <StyledUserMenuItem onClick={() => router.push('/account')}>
+                  <StyledMenuItem onClick={() => router.push('/account')}>
 
                     <HiOutlineAdjustments className={navIcon} />
 
                     Account Settings
 
-                  </StyledUserMenuItem>
+                  </StyledMenuItem>
 
-                  <StyledUserMenuItem onClick={ctx.signOut}>
+                  <StyledMenuItem onClick={ctx.signOut}>
 
                     <HiOutlineLogout className={navIcon} />
 
                     Sign Out
 
-                  </StyledUserMenuItem>
+                  </StyledMenuItem>
 
                 </StyledDiv>
               </UserMenu>

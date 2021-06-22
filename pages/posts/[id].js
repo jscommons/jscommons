@@ -4,10 +4,10 @@ import clsx from 'clsx'
 import { http } from '@ianwalter/http'
 import AppPage from '../../components/AppPage.js'
 import container from '../../styles/container.js'
-import Reply from '../../components/Reply.js'
+import ReplyList from '../../components/lists/ReplyList.js'
 import ReplyForm from '../../components/ReplyForm.js'
 import PostFooter from '../../components/footers/PostFooter.js'
-import AppLink from '../../components/AppLink.js'
+import AppLink from '../../components/links/AppLink.js'
 import logger from '../../lib/clientLogger.js'
 import { AppContext } from '../../lib/context.js'
 import BallotBox from '../../components/BallotBox.js'
@@ -123,9 +123,7 @@ export default function PostPage () {
             </div>
 
             <div className="mt-8 ml-10">
-              {post.replies.map(reply => (
-                <Reply key={reply.id} reply={reply} />
-              ))}
+              <ReplyList replies={post.replies} />
             </div>
 
           </div>

@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import AppLink from '../../components/AppLink.js'
+import AppLink from '../../components/links/AppLink.js'
 import container from '../../styles/container.js'
 
 const links = [

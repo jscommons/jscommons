@@ -10,7 +10,15 @@ export default async function getPost (ctx) {
       .modifyGraph(b => b.where('votes.accountId', ctx.session.account.id))
   }
 
-  ctx.body = await query
+  const post = await query
     .omit(['password', 'enabled', 'emailVerified'])
     .findById(ctx.params.id)
+
+  if (post.deleted) {
+    delete post.title
+    delete post.link
+    post.body = '[deleted]'
+  }
+
+  ctx.body = post
 }

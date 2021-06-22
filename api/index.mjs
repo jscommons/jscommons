@@ -4,6 +4,7 @@ import queryPosts from './middleware/queryPosts.js'
 import getPost from './middleware/getPost.js'
 import addPost from './middleware/addPost.js'
 import updatePost from './middleware/updatePost.js'
+import deletePost from './middleware/deletePost.js'
 import vote from './middleware/vote.js'
 import validatePost from './middleware/validatePost.js'
 import validateVote from './middleware/validateVote.js'
@@ -42,5 +43,8 @@ app.put('/api/posts/:id', validatePost, updatePost)
 
 // Allow users to vote on a post.
 app.post('/api/vote', validateVote, vote)
+
+// Allow users to delete their posts.
+app.delete('/api/posts/:id', deletePost)
 
 export default app

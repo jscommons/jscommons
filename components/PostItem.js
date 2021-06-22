@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import AppLink from '../components/AppLink.js'
+import AppLink from '../components/links/AppLink.js'
 import PostItemFooter from '../components/footers/PostItemFooter.js'
 import BallotBox from '../components/BallotBox.js'
 
@@ -25,7 +25,7 @@ export default function PostItem (props) {
           {props.post.title}
         </AppLink>
 
-        <PostItemFooter post={props.post} />
+        <PostItemFooter post={props.post} onDeleted={props.onDeleted} />
 
       </div>
 

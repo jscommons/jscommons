@@ -14,20 +14,34 @@ export default function PostList (props) {
   )
 
   function updatePosts (post, data, value) {
-    const withUpdatedVote = p => {
-      if (p.id === post.id) {
-        return { ...post, votes: [data], score: post.score + (value || -1) }
-      }
-      return p
-    }
-    setPosts(posts.map(withUpdatedVote).sort(byScore))
+    const updated = posts.reduce(
+      (acc, p) => {
+        const isMatch = p.id === post.id
+        if (isMatch && !post.deleted) {
+          acc.push({
+            ...post,
+            votes: [data],
+            score: post.score + (value || -1)
+          })
+        } else if (!isMatch) {
+          acc.push(p)
+        }
+        return acc
+      },
+      []
+    )
+    setPosts(updated.sort(byScore))
   }
 
   return (
     <ul>
       {posts?.map(post => (
         <li key={post.id} className="my-5 flex items-center">
-          <PostItem post={post} onVote={updatePosts} />
+          <PostItem
+            post={post}
+            onVote={updatePosts}
+            onDeleted={updatePosts}
+          />
         </li>
       ))}
     </ul>

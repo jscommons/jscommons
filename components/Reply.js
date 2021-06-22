@@ -42,6 +42,7 @@ export default function Reply (props) {
                 router.push('/sign-in')
               }
             }}
+            onDeleted={props.onDeleted}
           />
 
         </div>
