@@ -10,13 +10,6 @@ exports.up = knex => knex.schema.createTable('posts', t => {
   t.string('threadId')
   t.string('parentId')
   t.timestamps(true, true)
-
-  t.foreign('accountId')
-    .references('id')
-    .inTable('accounts')
-    .onDelete('CASCADE')
-  t.foreign('threadId').references('id').inTable('posts').onDelete('CASCADE')
-  t.foreign('parentId').references('id').inTable('posts').onDelete('CASCADE')
 })
 
 exports.down = knex => knex.schema.dropTable('posts')

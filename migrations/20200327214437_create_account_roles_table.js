@@ -7,13 +7,6 @@ exports.up = knex => knex.schema.createTable('accountRoles', t => {
   t.string('accountId').notNullable().index()
   t.string('roleId').notNullable()
   t.timestamps(true, true)
-
-  t
-    .foreign('accountId')
-    .references('id')
-    .inTable('accounts')
-    .onDelete('CASCADE')
-  t.foreign('roleId').references('id').inTable('roles')
 })
 
 exports.down = knex => knex.schema.dropTable('accountRoles')
