@@ -1,4 +1,5 @@
 import nrg from '@ianwalter/nrg'
+import { PSDB } from 'planetscale-node'
 import Account from './models/Account.mjs'
 import queryPosts from './middleware/queryPosts.js'
 import getPost from './middleware/getPost.js'
@@ -12,7 +13,12 @@ import validateVote from './middleware/validateVote.js'
 const app = nrg.createApp({
   name: 'JS Commons',
   next: { enabled: true },
-  db: { client: 'mysql' },
+  db: {
+    client: 'mysql',
+    ...process.env.NODE_ENV === 'production' && {
+      connection: new PSDB(process.env.DB_BRANCH || 'main')
+    }
+  },
   accounts: {
     models: { Account }
   }
