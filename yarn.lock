@@ -5948,10 +5948,10 @@ pkg-up@^2.0.0:
   dependencies:
     find-up "^2.1.0"
 
-planetscale-node@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/planetscale-node/-/planetscale-node-0.0.2.tgz#0135ba9225eb46be0a19a7b61bc773c4ca539233"
-  integrity sha512-KXU/bRPzi4c4W92HT21wS+g0y1dk3zsmGg4yf4TD1Nfk+GtlseMyzXLNJKXTlNkRWkcJymavFwWDqqrz19oAkw==
+planetscale-node@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/planetscale-node/-/planetscale-node-0.1.0.tgz#b75d75cc7373f87dfdcbb22b7820baa556605edf"
+  integrity sha512-jK9ZtVnyxkClM9PWz061AXFwY8IcfJp+vAPXEKF3E4JUaJPd1JUMxwL3tx+ph48k71e7oNR6H9nqD9HQ2+A0dA==
   dependencies:
     mysql2 "^2.2.5"
     node-forge "^0.10.0"
