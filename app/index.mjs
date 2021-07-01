@@ -10,10 +10,15 @@ import vote from './middleware/vote.js'
 import validatePost from './middleware/validatePost.js'
 import validateVote from './middleware/validateVote.js'
 
+const db = new PSDB(process.env.DB_BRANCH || 'main')
+
+// Workaround.
+db.enabled = true
+
 const app = nrg.createApp({
   name: 'JS Commons',
   next: { enabled: true },
-  db: new PSDB(process.env.DB_BRANCH || 'main'),
+  db,
   accounts: {
     models: { Account }
   }
