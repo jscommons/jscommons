@@ -13,12 +13,7 @@ import validateVote from './middleware/validateVote.js'
 const app = nrg.createApp({
   name: 'JS Commons',
   next: { enabled: true },
-  db: {
-    client: 'mysql',
-    ...process.env.NODE_ENV === 'production' && {
-      connection: new PSDB(process.env.DB_BRANCH || 'main')
-    }
-  },
+  db: new PSDB(process.env.DB_BRANCH || 'main'),
   accounts: {
     models: { Account }
   }
