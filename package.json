@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "jscommons",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "dev": "next dev --hostname 0.0.0.0 --port ${PORT:-11019}",
     "build": "next build",
