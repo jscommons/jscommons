@@ -15,7 +15,7 @@ export default async function queryPosts (ctx) {
           0
         ) +
         (
-          (UNIX_TIMESTAMP(posts.created_at) - UNIX_TIMESTAMP(NOW())) /
+          (extract(epoch FROM posts.created_at) - extract(epoch FROM NOW())) /
           (60 * 60 * 24)
         ) +
         posts.reply_count

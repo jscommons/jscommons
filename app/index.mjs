@@ -1,5 +1,4 @@
 import nrg from '@ianwalter/nrg'
-import { PSDB } from 'planetscale-node'
 import Account from './models/Account.mjs'
 import queryPosts from './middleware/queryPosts.js'
 import getPost from './middleware/getPost.js'
@@ -10,15 +9,9 @@ import vote from './middleware/vote.js'
 import validatePost from './middleware/validatePost.js'
 import validateVote from './middleware/validateVote.js'
 
-const db = new PSDB(process.env.DB_BRANCH || 'main')
-
-// Workaround.
-db.enabled = true
-
 const app = nrg.createApp({
   name: 'JS Commons',
   next: { enabled: true },
-  db,
   accounts: {
     models: { Account }
   }
