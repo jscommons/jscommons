@@ -465,20 +465,13 @@
     external-editor "^3.1.0"
     sisteransi "^1.0.5"
 
-"@generates/swag-squad@^0.0.26":
-  version "0.0.26"
-  resolved "https://registry.yarnpkg.com/@generates/swag-squad/-/swag-squad-0.0.26.tgz#e7f1564f7ad0c0b15d6247e4a0098fec3da02a2a"
-  integrity sha512-1bolHOwzrYs4w4AXTOB4/SFqENFWICZPJnoerEyzxQmBak/QGt6uDrqLW2oZ+Wk86sL3RK11dTvASjLfGZcZTQ==
+"@generates/swag-squad@^0.0.27":
+  version "0.0.27"
+  resolved "https://registry.yarnpkg.com/@generates/swag-squad/-/swag-squad-0.0.27.tgz#756569833b1d566c158c3281e2beaeacbb462434"
+  integrity sha512-X2WRiXxY+6+edJYB8AFQfOfFJcqYCMiyUaWXTt8aulBn3CFYYLGt4PSUjcHpheNM7+AFfb/pv4ki7yKY7uEowA==
   dependencies:
     "@generates/merger" "^0.1.3"
-    "@generates/swag" "^0.0.23"
-
-"@generates/swag@^0.0.23":
-  version "0.0.23"
-  resolved "https://registry.yarnpkg.com/@generates/swag/-/swag-0.0.23.tgz#c18bc72d61119712cb4f3fdd6ace940af7a968f5"
-  integrity sha512-UNwJEHS/a53zzmgwaXaScD7Rp+FRUn6mQB46noyqlkBvGjgL6agmI0WRvbh+uAq2o5ZqKRfmkX95Q0m0cQ1maw==
-  dependencies:
-    "@generates/merger" "^0.1.3"
+    "@generates/swag" "^0.0.24"
 
 "@generates/swag@^0.0.24":
   version "0.0.24"
