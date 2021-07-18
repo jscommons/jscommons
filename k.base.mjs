@@ -1,6 +1,7 @@
 import kdotRedis from '@generates/kdot-redis'
 
 const config = {
+  context: 'do-nyc1-prod',
   apps: {
     redis: kdotRedis({ tag: '6', localPort: 11020 }),
     jscommons: {
