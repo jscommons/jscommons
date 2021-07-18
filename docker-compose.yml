@@ -3,12 +3,12 @@ version: '3.7'
 services:
 
   redis:
-    image: redis
+    image: redis:6
     ports:
       - $REDIS_PORT:6379
 
   db:
-    image: postgres:13.3
+    image: postgres:13
     stop_signal: SIGINT
     ports:
       - $DB_PORT:5432

@@ -20,6 +20,7 @@
     "@ianwalter/nrg": "^0.25.0",
     "@popperjs/core": "^2.9.2",
     "@stitches/react": "^0.2.2",
+    "autoprefixer": "^10.3.1",
     "clsx": "^1.1.1",
     "common-tags": "^1.8.0",
     "date-fns": "^2.22.1",
@@ -27,16 +28,17 @@
     "nanoid": "^3.1.23",
     "next": "^11.0.1",
     "nprogress": "^0.2.0",
+    "postcss": "^8.3.5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.11.1",
     "react-icons": "^4.2.0",
     "react-popper": "^2.2.5",
-    "autoprefixer": "^10.3.1",
-    "postcss": "^8.3.5",
     "tailwindcss": "^2.2.4"
   },
   "devDependencies": {
+    "@generates/kdot": "^0.2.5",
+    "@generates/kdot-redis": "^0.0.2",
     "@ianwalter/bff": "^11.0.0",
     "@ianwalter/eslint-config": "^6.2.0",
     "eslint-config-next": "^11.0.1"
