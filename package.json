@@ -34,7 +34,7 @@
     "react-hook-form": "^7.11.1",
     "react-icons": "^4.2.0",
     "react-popper": "^2.2.5",
-    "tailwindcss": "^2.2.4"
+    "tailwindcss": "^2.2.7"
   },
   "devDependencies": {
     "@generates/kdot": "^0.2.5",
