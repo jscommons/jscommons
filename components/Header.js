@@ -80,13 +80,17 @@ export default function Header () {
                     </a>
                   </Link>
 
-                  <StyledMenuItem as="a" href="/logout" onClick={ctx.signOut}>
+                  <Link href="/sign-out">
+                    <a>
+                      <StyledMenuItem onClick={ctx.signOut}>
 
-                    <HiOutlineLogout className={navIcon} />
+                        <HiOutlineLogout className={navIcon} />
 
-                    Sign Out
+                        Sign Out
 
-                  </StyledMenuItem>
+                      </StyledMenuItem>
+                    </a>
+                  </Link>
 
                 </StyledDiv>
               </UserMenu>
