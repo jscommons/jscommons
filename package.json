@@ -10,6 +10,9 @@
     "test": "bff",
     "docker.be": "docker-compose up redis db"
   },
+  "kdot": {
+    "config": "k.base.mjs"
+  },
   "dependencies": {
     "@generates/dotter": "^2.0.2",
     "@generates/merger": "^0.1.3",

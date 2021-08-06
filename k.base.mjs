@@ -8,12 +8,14 @@ const config = {
     jscommons: {
       image: { repo: 'generates/jscommons' },
       ports: {
-        app: { port: 11019 }
+        app: { port: 11019, hosts: ['jscommons.com'] }
       },
       dependsOn: ['redis'],
       env: {
         PORT: '11019',
-        REDIS_HOST: 'redis'
+        REDIS_HOST: 'redis',
+        REDIS_PORT: '6379',
+        APP_BASE_URL: 'https://jscommons.com'
       },
       secrets: {
         app: { env: ['APP_KEYS'] },
