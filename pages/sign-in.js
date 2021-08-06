@@ -4,6 +4,7 @@ import clsx from 'clsx'
 import { http } from '@ianwalter/http'
 import { Alert } from '@generates/swag'
 import { SignInForm } from '@generates/swag-squad'
+import { useForm } from 'react-hook-form'
 import AppPage from '../components/AppPage.js'
 import { AppContext } from '../lib/context.js'
 import container from '../styles/container.js'
@@ -15,6 +16,7 @@ export default function SignInPage () {
   const router = useRouter()
   const [errorMessage, setErrorMessage] = useState()
   const [feedback, setFeedback] = useState({})
+  const form = useForm()
 
   async function signIn (body) {
     try {
@@ -45,6 +47,7 @@ export default function SignInPage () {
     <AppPage>
       <div className={clsx(container, 'my-16')}>
         <SignInForm
+          form={form}
           onSubmit={signIn}
           feedback={feedback}
           forgotPasswordLinkProps={{

@@ -3,6 +3,7 @@ import clsx from 'clsx'
 import { http } from '@ianwalter/http'
 import { StyledDiv, Alert } from '@generates/swag'
 import { AccountForm, ChangePasswordForm } from '@generates/swag-squad'
+import { useForm } from 'react-hook-form'
 import AppPage from '../components/AppPage.js'
 import { AppContext } from '../lib/context.js'
 import container from '../styles/container.js'
@@ -17,6 +18,7 @@ export default function AccountPage () {
   const [passwordError, setPasswordError] = useState()
   const [accountFeedback, setAccountFeedback] = useState({})
   const [passwordFeedback, setPasswordFeedback] = useState({})
+  const form = useForm()
 
   async function updateAccount (body) {
     try {
@@ -72,6 +74,7 @@ export default function AccountPage () {
 
         {ctx.account.id && (
           <AccountForm
+            form={form}
             onSubmit={updateAccount}
             defaultValues={ctx.account}
             feedback={accountFeedback}
@@ -116,6 +119,7 @@ export default function AccountPage () {
         <StyledDiv css={{ marginTop: '3em' }} />
 
         <ChangePasswordForm
+          form={form}
           onSubmit={changePassword}
           feedback={passwordFeedback}
           header={(

@@ -4,6 +4,7 @@ import clsx from 'clsx'
 import { http } from '@ianwalter/http'
 import { ResetPasswordForm } from '@generates/swag-squad'
 import { Alert } from '@generates/swag'
+import { useForm } from 'react-hook-form'
 import AppPage from '../components/AppPage.js'
 import { AppContext } from '../lib/context.js'
 import container from '../styles/container.js'
@@ -15,6 +16,7 @@ export default function ResetPasswordPage () {
   const router = useRouter()
   const [errorMessage, setErrorMessage] = useState()
   const [feedback, setFeedback] = useState({})
+  const form = useForm()
 
   async function resetPasword (body) {
     try {
@@ -39,6 +41,7 @@ export default function ResetPasswordPage () {
       <div className={clsx(container, 'my-16')}>
 
         <ResetPasswordForm
+          form={form}
           onSubmit={resetPasword}
           feedback={feedback}
           header={(

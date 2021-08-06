@@ -68,16 +68,19 @@ export default function Header () {
                 }
               }}>
                 <StyledDiv css={{ display: 'grid' }}>
+                  <Link href="/account">
+                    <a>
+                      <StyledMenuItem>
 
-                  <StyledMenuItem onClick={() => router.push('/account')}>
+                        <HiOutlineAdjustments className={navIcon} />
 
-                    <HiOutlineAdjustments className={navIcon} />
+                        Account Settings
 
-                    Account Settings
+                      </StyledMenuItem>
+                    </a>
+                  </Link>
 
-                  </StyledMenuItem>
-
-                  <StyledMenuItem onClick={ctx.signOut}>
+                  <StyledMenuItem as="a" href="/logout" onClick={ctx.signOut}>
 
                     <HiOutlineLogout className={navIcon} />
 
