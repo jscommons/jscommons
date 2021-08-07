@@ -6,7 +6,7 @@ const config = {
   apps: {
     redis: kdotRedis({ tag: '6', localPort: 11020 }),
     jscommons: {
-      image: { repo: 'generates/jscommons' },
+      image: { repo: 'jscom/jscommons' },
       ports: {
         app: { port: 11019, hosts: ['jscommons.com'] }
       },
