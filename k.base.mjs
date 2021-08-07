@@ -19,13 +19,16 @@ const config = {
       },
       secrets: {
         app: { env: ['APP_KEYS'] },
-        db: { keys: ['DB_URL'] }
+        db: { keys: ['DB_URL'] },
+        email: { keys: ['POSTMARK_API_KEY'] }
       }
     }
   },
   secrets: {
-    db: { env: ['DB_URL'] }
-  }
+    db: { env: ['DB_URL'] },
+    email: { env: ['POSTMARK_API_KEY'] }
+  },
+  imagePullPolicy: 'Always'
 }
 
 export default config
