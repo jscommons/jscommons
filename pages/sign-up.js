@@ -48,6 +48,7 @@ export default function SignUpPage () {
       <div className={clsx(container, 'my-16')}>
         <SignUpForm
           form={form}
+          showUsername={true}
           onSubmit={signUp}
           feedback={feedback}
           header={(
