@@ -9,18 +9,17 @@ import { HiOutlineAdjustments, HiOutlineLogout } from 'react-icons/hi'
 import { AppContext } from '../lib/context.js'
 import container from '../styles/container.js'
 import AppLink from '../components/links/AppLink.js'
-import { useRouter } from 'next/router'
 
-const links = [
-  { name: 'Top', href: '/' },
-  { name: 'Latest', href: '/latest' },
-  { name: 'Submit', href: '/submit' }
-]
 const navIcon = css({ marginRight: '.5em', fontSize: '1.25em' })()
 
 export default function Header () {
   const ctx = useContext(AppContext)
-  const router = useRouter()
+
+  const links = [
+    { name: 'Top', href: '/' },
+    { name: 'Latest', href: '/latest' },
+    { name: 'Submit', href: ctx.account.id ? '/submit' : '/sign-in?to=/submit' }
+  ]
 
   return (
     <div className={clsx(container, 'flex items-center mt-6')}>
