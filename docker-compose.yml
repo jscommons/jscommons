@@ -8,7 +8,7 @@ services:
       - $REDIS_PORT:6379
 
   db:
-    image: postgres:13
+    image: postgres:14
     stop_signal: SIGINT
     ports:
       - $DB_PORT:5432
