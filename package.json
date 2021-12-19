@@ -20,7 +20,7 @@
     "@generates/swag-squad": "^0.0.30",
     "@headlessui/react": "^1.4.0",
     "@ianwalter/http": "^6.0.0",
-    "@ianwalter/nrg": "^0.25.0",
+    "@ianwalter/nrg": "^0.27.0",
     "@popperjs/core": "^2.9.3",
     "@stitches/react": "^0.2.4",
     "autoprefixer": "^10.3.1",
