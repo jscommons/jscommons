@@ -458,13 +458,13 @@
     external-editor "^3.1.0"
     sisteransi "^1.0.5"
 
-"@generates/swag-squad@^0.0.30":
-  version "0.0.30"
-  resolved "https://registry.yarnpkg.com/@generates/swag-squad/-/swag-squad-0.0.30.tgz#01d7459bd32cee5ab22a50264494448297f99e09"
-  integrity sha512-yfjVFwYA/Lf+h1iplGGfw6BmKpHZR+q8egvBYLQkNZu56EfdidSnq7uTyOqSvgMJuHMdeWP10ffU9sHWfmOzqg==
+"@generates/swag-squad@^0.0.33":
+  version "0.0.33"
+  resolved "https://registry.yarnpkg.com/@generates/swag-squad/-/swag-squad-0.0.33.tgz#cef60ee1dba0ffaba4625aad2a9e72f3b75c21a4"
+  integrity sha512-xuJPb8YnfTycv6RBsbl0njfKv+GsBOkUxe4zXw+S+pUCTGKW4B1AwDqd5vXdaWcnUxSl5UuegW+sKwxgA5Goyw==
   dependencies:
     "@generates/merger" "^0.1.3"
-    "@generates/swag" "^0.0.27"
+    "@generates/swag" "^1.0.0"
 
 "@generates/swag@^0.0.27":
   version "0.0.27"
@@ -473,6 +473,20 @@
   dependencies:
     "@generates/merger" "^0.1.3"
     common-tags "^1.8.0"
+
+"@generates/swag@^1.0.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@generates/swag/-/swag-1.1.0.tgz#c47b028dd4d61e458fd8856e0bc07f7eb6ff38c8"
+  integrity sha512-ziPgEEgQxX49bWt8azLlHGcjU4jfH7+qKTOYAgqMO9WZv+vPuciBICvT+s1AYhIbnNVaRanZ+nr0KMyXS/T2Pw==
+  dependencies:
+    "@generates/merger" "^0.1.3"
+    common-tags "^1.8.0"
+  optionalDependencies:
+    "@headlessui/react" "^1.4.1"
+    "@popperjs/core" "^2.10.2"
+    framer-motion "^4.1.17"
+    react-icons "^4.3.1"
+    react-popper "^2.2.5"
 
 "@hapi/accept@5.0.2":
   version "5.0.2"
@@ -498,6 +512,11 @@
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@headlessui/react/-/react-1.4.0.tgz#c6d424d8ab10ac925e4423d7f3cbab02c30d736a"
   integrity sha512-C+FmBVF6YGvqcEI5fa2dfVbEaXr2RGR6Kw1E5HXIISIZEfsrH/yuCgsjWw5nlRF9vbCxmQ/EKs64GAdKeb8gCw==
+
+"@headlessui/react@^1.4.1":
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/@headlessui/react/-/react-1.4.2.tgz#87e264f190dbebbf8dfdd900530da973dad24576"
+  integrity sha512-N8tv7kLhg9qGKBkVdtg572BvKvWhmiudmeEpOCyNwzOsZHCXBtl8AazGikIfUS+vBoub20Fse3BjawXDVPPdug==
 
 "@ianwalter/bff@^11.0.0":
   version "11.0.0"
@@ -914,6 +933,11 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@panva/asn1.js/-/asn1.js-1.0.0.tgz#dd55ae7b8129e02049f009408b97c61ccf9032f6"
   integrity sha512-UdkG3mLEqXgnlKsWanWcgb6dOjUzJ+XC5f+aWw30qrtjxeNUSfKX1cd5FBzOaXQumoe9nIqeZUvrRJS03HCCtw==
+
+"@popperjs/core@^2.10.2":
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.0.tgz#6734f8ebc106a0860dff7f92bf90df193f0935d7"
+  integrity sha512-zrsUxjLOKAzdewIDRWy9nsV1GQsKBCWaGwsZQlCgr6/q+vjyZhFgqedLfFBuI9anTPEUT4APq9Mu0SZBTzIcGQ==
 
 "@popperjs/core@^2.9.3":
   version "2.9.3"
@@ -6937,6 +6961,11 @@ react-icons@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.2.0.tgz#6dda80c8a8f338ff96a1851424d63083282630d0"
   integrity sha512-rmzEDFt+AVXRzD7zDE21gcxyBizD/3NqjbX6cmViAgdqfJ2UiLer8927/QhhrXQV7dEj/1EGuOTPp7JnLYVJKQ==
+
+react-icons@^4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.3.1.tgz#2fa92aebbbc71f43d2db2ed1aed07361124e91ca"
+  integrity sha512-cB10MXLTs3gVuXimblAdI71jrJx8njrJZmNMEMC+sQu5B/BIOmlsAjskdqpn81y8UBVEGuHODd7/ci5DvoSzTQ==
 
 react-is@17.0.2, react-is@^17.0.1:
   version "17.0.2"
