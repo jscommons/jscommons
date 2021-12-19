@@ -474,6 +474,20 @@
     "@generates/merger" "^0.1.3"
     common-tags "^1.8.0"
 
+"@generates/swag@^0.0.29":
+  version "0.0.29"
+  resolved "https://registry.yarnpkg.com/@generates/swag/-/swag-0.0.29.tgz#0bf18c9185f23a3d27ea0a0da2c1a69da1a5c2f7"
+  integrity sha512-tJk74IrJkRoE+uuAE8ENWbKX3TNL/R0jn8nLw8PUmzDhZAvTr4da9eUHXMe+kCxGE6nCK/9B4xc4erJ4w26heA==
+  dependencies:
+    "@generates/merger" "^0.1.3"
+    common-tags "^1.8.0"
+  optionalDependencies:
+    "@headlessui/react" "^1.3.0"
+    "@popperjs/core" "^2.9.3"
+    framer-motion "^4.1.17"
+    react-icons "^4.2.0"
+    react-popper "^2.2.5"
+
 "@hapi/accept@5.0.2":
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/@hapi/accept/-/accept-5.0.2.tgz#ab7043b037e68b722f93f376afb05e85c0699523"
@@ -493,6 +507,11 @@
   version "9.2.0"
   resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-9.2.0.tgz#f3933a44e365864f4dad5db94158106d511e8131"
   integrity sha512-sqKVVVOe5ivCaXDWivIJYVSaEgdQK9ul7a4Kity5Iw7u9+wBAPbX1RMSnLLmp7O4Vzj0WOWwMAJsTL00xwaNug==
+
+"@headlessui/react@^1.3.0":
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/@headlessui/react/-/react-1.4.2.tgz#87e264f190dbebbf8dfdd900530da973dad24576"
+  integrity sha512-N8tv7kLhg9qGKBkVdtg572BvKvWhmiudmeEpOCyNwzOsZHCXBtl8AazGikIfUS+vBoub20Fse3BjawXDVPPdug==
 
 "@headlessui/react@^1.4.0":
   version "1.4.0"
