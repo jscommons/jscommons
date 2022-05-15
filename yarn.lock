@@ -1008,10 +1008,10 @@
     escape-string-regexp "^5.0.0"
     lodash.deburr "^4.1.0"
 
-"@stitches/react@^0.2.4":
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/@stitches/react/-/react-0.2.4.tgz#c924809435f03650e8e95ddf30e580d817854162"
-  integrity sha512-kyJ10ozRHA5zwDCgxkJCuocRxlN2EmvxpSj9KQdrcCxxEALdvSOeEwC8VYaNfHliiac86qhAWhMS/D14sGywLQ==
+"@stitches/react@^1.2.8":
+  version "1.2.8"
+  resolved "https://registry.yarnpkg.com/@stitches/react/-/react-1.2.8.tgz#954f8008be8d9c65c4e58efa0937f32388ce3a38"
+  integrity sha512-9g9dWI4gsSVe8bNLlb+lMkBYsnIKCZTmvqvDG+Avnn69XfmHZKiaMrx7cgTaddq7aTPPmXiTsbFcUy0xgI4+wA==
 
 "@szmarczak/http-timer@^4.0.5":
   version "4.0.6"
