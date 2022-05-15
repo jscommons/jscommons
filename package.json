@@ -44,7 +44,7 @@
     "@generates/kdot-redis": "^0.0.2",
     "@ianwalter/bff": "^11.0.0",
     "@ianwalter/eslint-config": "^6.2.0",
-    "eslint-config-next": "^11.0.1"
+    "eslint-config-next": "^12.1.6"
   },
   "nrg": {
     "app": "app/index.mjs"
