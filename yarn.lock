@@ -591,10 +591,10 @@
     eslint-plugin-promise "^4.2.1"
     eslint-plugin-standard "^4.1.0"
 
-"@ianwalter/http@^6.0.0":
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/@ianwalter/http/-/http-6.0.0.tgz#be92ed090d063ce14918647ad678a2c1241f5a5a"
-  integrity sha512-3DAL6NMzjf9SRTx6AHYT+ZSPvoQ1ABaKlgFwzdASUaOc0nkXFTA1UqpbPWY+mm30dKQ/B37MkPntBas5UHrbog==
+"@ianwalter/http@^7.0.1":
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/@ianwalter/http/-/http-7.0.1.tgz#a1bfbbe8ccc4d4e307837eb6378f9cabc291f3c1"
+  integrity sha512-/GVP0B78sLEtJNQTupQuAVZmhDcmG0jmGRfCXFpfdqMsWj2iMMHAIvE944sXB7grNcc9sU3WGXTVoroSyuGFBA==
 
 "@ianwalter/log@^4.0.0":
   version "4.0.0"
