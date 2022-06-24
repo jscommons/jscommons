@@ -27,7 +27,7 @@
     "clsx": "^1.1.1",
     "common-tags": "^1.8.0",
     "date-fns": "^2.23.0",
-    "framer-motion": "^4.1.17",
+    "framer-motion": "^6.3.13",
     "nanoid": "^3.1.23",
     "next": "^11.0.1",
     "nprogress": "^0.2.0",
